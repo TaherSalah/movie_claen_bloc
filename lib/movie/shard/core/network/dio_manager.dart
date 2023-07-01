@@ -1,7 +1,13 @@
-
-
+import 'dart:async';
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
+import '../../constant/app_value.dart';
+import '../../utils/utils.dart';
+
+
+/// Class that makes API call easier
 class DioManager {
   Dio? _dioInstance;
 
@@ -11,85 +17,114 @@ class DioManager {
   }
 
   Dio initDio() {
-    final Dio dio = Dio(BaseOptions(
-      // baseUrl: AppValues.baseUrl,
-      headers: <String, dynamic>{},
-
-      // connectTimeout: 3000,
-      // receiveTimeout: 3000,
-    ));
-
-    // if (!kReleaseMode) {
-    //   dio.interceptors.add(PrettyDioLogger(
-    //     requestHeader: true,
-    //     requestBody: true,
-    //     request: true,
-    //     responseBody: true,
-    //     responseHeader: true,
-    //     compact: true,
-    //     maxWidth: 120,
-    //   ));
-    // }
+    final Dio dio = Dio(
+      BaseOptions(
+        baseUrl: AppValues.baseUrl,
+        headers: <String, String> {},
+        sendTimeout: const Duration(microseconds: 30000),
+        connectTimeout: const Duration(microseconds: 20000),
+        receiveTimeout: const Duration(microseconds: 60000),
+      ),
+    );
+    if (!kReleaseMode) {
+      dio.interceptors.add(
+        PrettyDioLogger(
+          requestHeader: true,
+          requestBody: true,
+          responseBody: true,
+          responseHeader: true,
+          error: true,
+          compact: true,
+          maxWidth: 120,
+        ),
+      );
+    }
     return dio;
   }
 
   void update() => _dioInstance = initDio();
 
-  ///http req
-  ///get
-  ///post
-  ///put
-  ///delete
-///
-///
-///
-///
-   ///get -> url
-   // Future<Response> get (String url,{Map <String,dynamic>? header, Map <String,dynamic>? json})async{
-   //   return await dio!.get(url,queryParameters: json,options: Options(headers: header)).then((response) {
-   //     return response;
-   //   }).catchError((error){
-   //     errorToast(code: error.response?.statusCode?.toString()??"error",
-   //     msg: error.response?.data?.toString()??"error "
-   //     );
-   //   });
-   // }
+  /// DIO GET
+  /// take [path], concrete route
+  Future<Response> get(
+      String path, {
+        Map<String, dynamic>? headers,
+        Map<String, dynamic>? parameters,
+      }) async {
+    return await dio!.get(
+      path,
+      queryParameters: parameters,
+      options: Options(headers: headers),
+    ).then((response) {
+      return response;
+    }).catchError((dynamic error) async {
+      errorToast(
+        code: error.response?.data?['status_code']?.toString() ?? '',
+        message: '${error.response?.data?['status_message']?.toString() ?? ''} error',
+      );
+    });
+  }
 
-   ///post -> url
-   // Future<Response> post (String url,{Map <String,dynamic>? header,dynamic data})async{
-   //   return await dio!.post(url,data: data,options: Options(headers: header)).then((response) {
-   //     return response;
-   //   }).catchError((error){
-   //     errorToast(code: error.response?.statusCode?.toString()??"error",
-   //     msg: error.response?.data?.toString()??"error "
-   //     );
-   //   });
-   // }
+  /// DIO POST
+  /// take [path], concrete route
+  Future<Response> post(
+      String path, {
+        Map<String, dynamic>? headers,
+        dynamic body,
+      }) async {
+    return await dio!.post(
+      path,
+      data: body,
+      options: Options(headers: headers),
+    ).then((response) {
+      return response;
+    }).catchError((dynamic error) {
+      errorToast(
+        code: error.response?.data?['status_code']?.toString() ?? '',
+        message: '${error.response?.data?['status_message']?.toString() ?? ''} error',
+      );
+    });
+  }
 
-   ///put -> url
-   // Future<Response> put (String url,{Map <String,dynamic>? header,dynamic data})async{
-   //   return await dio!.put(url,data: data,options: Options(headers: header)).then((response) {
-   //     return response;
-   //   }).catchError((error){
-   //     errorToast(code: error.response?.statusCode?.toString()??"error",
-   //     msg: error.response?.data?.toString()??"error "
-   //     );
-   //   });
-   // }
-   //
-   ///delete -> url
-   // Future<Response> delete (String url,{Map <String,dynamic>? header,dynamic data})async{
-   //   return await dio!.delete(url,data: data,options: Options(headers: header)).then((response) {
-   //     return response;
-   //   }).catchError((error){
-   //     errorToast(code: error.response?.statusCode?.toString()??"error",
-   //     msg: error.response?.data?.toString()??"error "
-   //     );
-   //   });
-   // }
+  /// DIO PUT
+  /// take [path], concrete route
+  Future<Response> put(
+      String path, {
+        Map<String, dynamic>? headers,
+        dynamic body,
+      }) async {
+    return await dio!.put(
+      path,
+      data: body,
+      options: Options(headers: headers),
+    ).then((response) {
+      return response;
+    }).catchError((dynamic error) {
+      errorToast(
+        code: error.response?.data?['status_code']?.toString() ?? '',
+        message: '${error.response?.data?['status_message']?.toString() ?? ''} error',
+      );
+    });
+  }
 
-
-
+  /// DIO DELETE
+  /// take [path], concrete route
+  Future<Response> delete(
+      String path, {
+        Map<String, dynamic>? headers,
+        dynamic body,
+      }) async {
+    return await dio!.delete(
+      path,
+      data: body,
+      options: Options(headers: headers),
+    ).then((response) {
+      return response;
+    }).catchError((dynamic error) {
+      errorToast(
+        code: error.response?.data?['status_code']?.toString() ?? '',
+        message: '${error.response?.data?['status_message']?.toString() ?? ''} error',
+      );
+    });
+  }
 }
-
-

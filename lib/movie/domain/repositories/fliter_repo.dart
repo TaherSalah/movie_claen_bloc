@@ -14,7 +14,7 @@ class FilterRepoImplemetion extends FilterRepo {
   Future<List<GenreResponse>> getGenres() async {
     List<GenreResponse> res = <GenreResponse>[];
   try {
-    await  dioManager.dio?.get('genre/movie/list', queryParameters: {
+    await  dioManager.get('genre/movie/list', parameters: {
         'api_key': AppValues.apiKey,
         'language': 'en-Us'
       }).then((response) {
