@@ -62,42 +62,48 @@ class MovieReposatry extends MovieRepo {
   @override
   Future<List<MovieResponse?>> getMovieDetails(
       MovieDetailsRequest param) async {
-    // TODO: implement getMovieDetails
+    List<MovieResponse> res = <MovieResponse>[];
 
+    // TODO: implement getMovieDetails
     try {
       return await _dioManager
-
-          ////***** i'm called apiKey from prams in request layer  *****////
-          .get('movie/${param.apiKey}', parameters: param.toJson())
-          .then((response) async {
-        return MovieResponse.fromJson(response.data);
+          .get(
+        'movie/${param.movieId}',
+        parameters: param.toJson(),
+      )
+          .then((response) {
+        res = (response.data['results'] as List)
+            .map((e) => MovieResponse.fromJson(e))
+            .toList();
+        return res;
       });
-    } on Exception catch (e) {
+    } catch (e) {
       log(e.toString());
-      return null;
-      // TODO
+      return res;
     }
   }
 
-  //////// ****** Movie  Filter  Data Method         ****** ////////
+//////// ****** Movie  Filter  Data Method         ****** ////////
 
   @override
   Future<List<MoviesResponse>> getMovieFilter(MovieFilterRequest param) async {
-    // TODO: implement getMovieFilter
     List<MoviesResponse> res = <MoviesResponse>[];
     try {
-      await _dioManager
-          .get('discover/movie', parameters: param.toJson())
+      return await _dioManager
+          .get(
+        'discover/movie',
+        parameters: param.toJson(),
+      )
           .then((response) {
-        res = (response.data as List)
-            .map((e) => MoviesResponse.fromJson(e))
-            .toList();
+        res = (response.data['results'] as List).map((e) {
+          return MoviesResponse.fromJson(e);
+        }).toList();
+        return res;
       });
-    } on Exception catch (e) {
+    } catch (e) {
       log(e.toString());
       return res;
-      // TODO
     }
-    return res;
+    // TODO: implement getMovieFilter
   }
 }
