@@ -1,5 +1,5 @@
-import 'package:movie_db_bloc/movies/domain/entities/movie.dart';
-import 'package:movie_db_bloc/movies/domain/repositories/base_movie_repostory.dart';
+
+import 'package:movie_db_bloc/core/exports/exports_files.dart';
 
 class GetNowPlayingMovieUseCase {
   final BaseMovieRepository baseMovieRepository;
