@@ -1,10 +1,5 @@
-import 'dart:io';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
-import '../Theme/theme.dart';
-import '../Utilities/Layout/helper.dart';
-import 'custom_stack_widget.dart';
+
+import 'package:movie_db_bloc/core/exports/exports_files.dart';
 
 
 class ConfirmSendingFileWidget extends StatelessWidget {
@@ -50,21 +45,21 @@ class ConfirmSendingFileWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Text(Helper.getFileName(pickedFile),
-                        style: TextStyle(
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w400,
-                            color: ThemeClass.blackColor),
-                        maxLines: 1,
-                      ),
+                      // Text(Helper.getFileName(pickedFile),
+                      //   style: TextStyle(
+                      //       fontSize: 14.sp,
+                      //       fontWeight: FontWeight.w400,
+                      //       color: ThemeClass.blackColor),
+                      //   maxLines: 1,
+                      // ),
                       // SizedBox(height: 4.h),
-                      Text(
-                        "${Helper.getFileSize(pickedFile)} Kb",
-                        style: TextStyle(
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w400,
-                            color: ThemeClass.greyColor),
-                      ),
+                      // Text(
+                      //   "${Helper.getFileSize(pickedFile)} Kb",
+                      //   style: TextStyle(
+                      //       fontSize: 12.sp,
+                      //       fontWeight: FontWeight.w400,
+                      //       color: ThemeClass.greyColor),
+                      // ),
                     ],
                   ),
                 ),

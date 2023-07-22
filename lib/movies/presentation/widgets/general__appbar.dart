@@ -1,11 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
-import '../Theme/theme.dart';
-import 'back_button_widget.dart';
-import 'custom_sliver_appbar_tiltle_widget.dart';
-import 'default_text_widget.dart';
+
+
+
+
+import 'package:movie_db_bloc/core/exports/exports_files.dart';
 
 class GeneralAppbar extends StatelessWidget {
   const GeneralAppbar({Key? key, required this.title,}) : super(key: key);

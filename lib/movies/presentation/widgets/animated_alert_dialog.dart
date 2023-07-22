@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+
+import 'package:movie_db_bloc/core/exports/exports_files.dart';
 
 animatedAlertDialog(BuildContext context, Widget widget) async {
   showGeneralDialog(

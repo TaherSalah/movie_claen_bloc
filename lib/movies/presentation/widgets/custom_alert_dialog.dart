@@ -1,8 +1,6 @@
-import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:schoopedia_app/Theme/theme.dart';
-import 'package:schoopedia_app/Widgets/default_text_widget.dart';
+
+
+import 'package:movie_db_bloc/core/exports/exports_files.dart';
 
 class CustomDialog extends StatefulWidget {
 

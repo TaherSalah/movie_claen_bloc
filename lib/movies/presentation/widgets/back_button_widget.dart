@@ -1,8 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:schoopedia_app/Shared/shared_preferances.dart';
-import 'package:schoopedia_app/Theme/theme.dart';
+
+import 'package:movie_db_bloc/core/exports/exports_files.dart';
+
 
 class BackButtonWidget extends StatelessWidget {
   final  String? icon;

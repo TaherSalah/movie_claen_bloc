@@ -1,9 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:schoopedia_app/Widgets/default_text_widget.dart';
 
-import '../../Theme/theme.dart';
+
+
+
+import 'package:movie_db_bloc/core/exports/exports_files.dart';
 
 class CustomTextFieldWidget extends StatelessWidget {
   final TextEditingController? controller;

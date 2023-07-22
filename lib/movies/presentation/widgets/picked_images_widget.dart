@@ -1,10 +1,6 @@
-import 'dart:io';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:schoopedia_app/Utilities/Layout/helper.dart';
 
-import '../Theme/theme.dart';
-import 'custom_stack_widget.dart';
+
+import '../../../core/exports/exports_files.dart';
 
 class PickedImagesWidget extends StatefulWidget {
   const PickedImagesWidget({Key? key, required this.pickedImages,  required this.noImagesCallback}) : super(key: key);
@@ -66,7 +62,7 @@ class ConfirmSendingImageWidget extends StatelessWidget {
               borderRadius: BorderRadius.circular(8.r), // Image border
               child: SizedBox.fromSize(
                 size: Size.fromRadius(34.r), // Image radius
-                child: Image.file(pickedImage, fit: BoxFit.cover).showOnTap(),
+                child: Image.file(pickedImage, fit: BoxFit.cover),
               ),
             ),
           ),
