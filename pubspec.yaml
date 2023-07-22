@@ -19,6 +19,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   dio: ^5.3.0
   equatable: ^2.0.5
+  flutter_screenutil:
+  flutter_svg:
 dev_dependencies:
   flutter_test:
     sdk: flutter

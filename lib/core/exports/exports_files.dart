@@ -8,3 +8,8 @@ export 'package:movie_db_bloc/movies/data/models/movie_model.dart';
 export 'package:equatable/equatable.dart';
 export 'package:flutter/material.dart';
 export 'package:movie_db_bloc/core/network/api_constanc.dart';
+export 'package:flutter_screenutil/flutter_screenutil.dart';
+export 'package:movie_db_bloc/movies/presentation/widgets/gradien_asset_widget.dart';
+export 'package:movie_db_bloc/core/Theme/theme.dart';
+export 'package:flutter_svg/svg.dart';
+export 'package:movie_db_bloc/movies/presentation/widgets/default_text_widget.dart';
