@@ -13,7 +13,9 @@ class MovieRemoteDataSource extends BaseRemoteMovieDataSource {
 
   @override
   Future<List<MovieModel>> getNowPlayingMovie() async {
-    final response = await dio.get(AppConstance.baseUrl);
+    // TODO: implement getNowPlayingMovie
+
+    final response = await dio.get(ApiConstance.getNowPlayingMoviePath);
     if (response.statusCode == 200) {
       return List<MovieModel>.from((response.data['results'] as List)
           .map((e) => MovieModel.fromJson(e)));
@@ -27,14 +29,28 @@ class MovieRemoteDataSource extends BaseRemoteMovieDataSource {
   }
 
   @override
-  Future<List<MovieModel>> getPopularMovie() {
+  Future<List<MovieModel>> getPopularMovie() async {
     // TODO: implement getPopularMovie
-    throw UnimplementedError();
+    final response = await dio.get(ApiConstance.getPopularMoviePath);
+    if (response.statusCode == 200) {
+      return List<MovieModel>.from((response.data['results'] as List)
+          .map((e) => MovieModel.fromJson(e)));
+    } else {
+      return throw (ServerException(
+          errorMessageModel: ErrorMessageModel.fromJson(response.data)));
+    }
   }
 
   @override
-  Future<List<MovieModel>> getTpoRatedMovie() {
+  Future<List<MovieModel>> getTpoRatedMovie() async {
     // TODO: implement getTpoRatedMovie
-    throw UnimplementedError();
+    final response = await dio.get(ApiConstance.getTopRatedMoviePath);
+    if (response.statusCode == 200) {
+      return List<MovieModel>.from((response.data['results'] as List)
+          .map((e) => MovieModel.fromJson(e)));
+    } else {
+      return throw (ServerException(
+          errorMessageModel: ErrorMessageModel.fromJson(response.data)));
+    }
   }
 }

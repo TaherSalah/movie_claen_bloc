@@ -7,3 +7,4 @@ export 'package:movie_db_bloc/core/utiles/app_constanc.dart';
 export 'package:movie_db_bloc/movies/data/models/movie_model.dart';
 export 'package:equatable/equatable.dart';
 export 'package:flutter/material.dart';
+export 'package:movie_db_bloc/core/network/api_constanc.dart';
