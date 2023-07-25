@@ -5,7 +5,7 @@ abstract class BaseRemoteMovieDataSource {
 
   Future<List<MovieModel>> getPopularMovie();
 
-  Future<List<MovieModel>> getTpoRatedMovie();
+  Future<List<MovieModel>> getTopRatedMovie();
 }
 
 class MovieRemoteDataSource extends BaseRemoteMovieDataSource {
@@ -42,7 +42,7 @@ class MovieRemoteDataSource extends BaseRemoteMovieDataSource {
   }
 
   @override
-  Future<List<MovieModel>> getTpoRatedMovie() async {
+  Future<List<MovieModel>> getTopRatedMovie() async {
     // TODO: implement getTpoRatedMovie
     final response = await dio.get(ApiConstance.getTopRatedMoviePath);
     if (response.statusCode == 200) {

@@ -1,4 +1,6 @@
 
+import 'package:dartz/dartz.dart';
+import 'package:movie_db_bloc/core/error/failure.dart';
 import 'package:movie_db_bloc/core/exports/exports_files.dart';
 
 class GetNowPlayingMovieUseCase {
@@ -6,7 +8,7 @@ class GetNowPlayingMovieUseCase {
 
   GetNowPlayingMovieUseCase(this.baseMovieRepository);
 
-  Future<List<Movie>> execute() async {
+  Future<Either<ServerFailure,List<Movie>>> execute() async {
     return await baseMovieRepository.getNowPlayingMovie();
   }
 }

@@ -17,7 +17,7 @@ class BackButtonWidget extends StatelessWidget {
       child: Transform.scale(
         alignment: Alignment.center,
         scaleX: SharedPref.getCurrentLang() == 'ar' ? -1 : 1,
-        child: SvgPicture.asset(
+        child: Image.asset(
           icon ??"assets/images/arrow-left.svg",
           color: iconColor ?? ThemeClass.blackColor,
           height: height ?? 24.h,
