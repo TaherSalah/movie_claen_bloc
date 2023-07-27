@@ -1,4 +1,5 @@
 import 'package:movie_db_bloc/core/exports/exports_files.dart';
+import 'package:movie_db_bloc/movies/presentation/screens/movie_screen.dart';
 
 
 
@@ -22,7 +23,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
+
       ),
+      home: const MovieScreen(),
     );
   }
 }

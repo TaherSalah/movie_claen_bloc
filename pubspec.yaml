@@ -33,6 +33,7 @@ dependencies:
   carousel_slider:
   image_picker:
   awesome_dialog:
+  sign_in_with_apple: ^5.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
