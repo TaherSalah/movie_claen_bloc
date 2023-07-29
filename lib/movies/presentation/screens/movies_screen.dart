@@ -10,6 +10,7 @@ class MainMoviesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
+
     return BlocProvider(
       create: (context) => MovieBloc(sl())..add(const GetNowPlayingMoviesEvent()),
       child: BlocBuilder<MovieBloc,MoviesStates>(

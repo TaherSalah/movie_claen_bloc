@@ -12,6 +12,7 @@ class MovieBloc extends Bloc<MoviesEvents, MoviesStates> {
           await GetNowPlayingMovieUseCase(sl()).execute();
       print(res);
 
+
       /////*** for change the state error and success ***////
 
       res.fold(

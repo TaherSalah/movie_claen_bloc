@@ -3,6 +3,7 @@
 import 'package:movie_db_bloc/core/exports/exports_files.dart';
 
 class MoviesStates extends Equatable {
+
   @override
   // TODO: implement props
   List<Object?> get props =>
