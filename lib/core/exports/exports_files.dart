@@ -11,11 +11,11 @@ export 'package:movie_db_bloc/core/network/api_constanc.dart';
 export 'package:flutter_screenutil/flutter_screenutil.dart';
 export 'package:movie_db_bloc/core/Theme/theme.dart';
 export 'package:flutter_svg/svg.dart';
-export 'package:movie_db_bloc/movies/presentation/widgets/default_text_widget.dart';
+
 export 'package:pin_code_fields/pin_code_fields.dart';
-export 'package:movie_db_bloc/movies/presentation/widgets/custom_stack_widget.dart';
+
 export 'dart:io';
-export 'package:movie_db_bloc/movies/presentation/widgets/componts/helper.dart';
+
 export 'package:flutter_modular/flutter_modular.dart';
 export 'package:flutter/foundation.dart';
 export 'package:path_provider/path_provider.dart';
@@ -26,8 +26,7 @@ export 'package:awesome_dialog/awesome_dialog.dart';
 export 'package:provider/provider.dart';
 export 'package:movie_db_bloc/core/shared_pref/shared_preferances.dart';
 export 'package:flutter/services.dart';
-export 'package:movie_db_bloc/movies/presentation/widgets/custom_sliver_appbar_tiltle_widget.dart';
-export 'package:movie_db_bloc/movies/presentation/widgets/back_button_widget.dart';
+
 export 'package:carousel_slider/carousel_slider.dart';
 export 'package:animate_do/animate_do.dart';
 export 'package:cached_network_image/cached_network_image.dart';
@@ -44,3 +43,4 @@ export 'package:movie_db_bloc/movies/presentation/controller/movies_events.dart'
 export 'package:movie_db_bloc/movies/presentation/controller/movies_states.dart';
 export 'package:movie_db_bloc/core/error/failure.dart';
 export 'package:movie_db_bloc/core/services/services_locator.dart';
+export 'package:movie_db_bloc/movies/presentation/controller/movies_bloc.dart';
