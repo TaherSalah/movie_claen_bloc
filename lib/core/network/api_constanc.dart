@@ -6,4 +6,7 @@ class ApiConstance {
   static const String getNowPlayingMoviePath='$baseUrl/movie/now_playing?$apiKey';
   static const String getPopularMoviePath='$baseUrl/movie/popular?$apiKey';
   static const String getTopRatedMoviePath='$baseUrl/movie/top_rated?$apiKey';
+  static const String imagePath='https://image.tmdb.org/t/p/w500';
+  static  String imageUrl(String path)=>'$imagePath$path';
+
 }

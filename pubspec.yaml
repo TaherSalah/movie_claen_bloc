@@ -27,11 +27,17 @@ dependencies:
   path_provider:
   shared_preferences:
   intl:
+  shimmer:
+  google_fonts:
   provider:
+  cached_network_image:
+  animate_do:
+  flutter_bloc:
   fluttertoast:
   dartz:
   carousel_slider:
   image_picker:
+  get_it: 
   awesome_dialog:
   sign_in_with_apple: ^5.0.0
 dev_dependencies:

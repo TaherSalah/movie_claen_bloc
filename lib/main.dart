@@ -1,5 +1,5 @@
 import 'package:movie_db_bloc/core/exports/exports_files.dart';
-import 'package:movie_db_bloc/movies/presentation/screens/movie_screen.dart';
+import 'package:movie_db_bloc/movies/presentation/screens/movies_screen.dart';
 
 
 
@@ -7,6 +7,7 @@ import 'package:movie_db_bloc/movies/presentation/screens/movie_screen.dart';
 
 
 void main() {
+  ServicesLocator().init();
   runApp(const MyApp());
 }
 
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
 
       ),
-      home: const MovieScreen(),
+      home: const MainMoviesScreen (),
     );
   }
 }
