@@ -14,7 +14,9 @@ class MoviesStates extends Equatable {
   final String message;
 
   const MoviesStates(
-      {this.getNowPlayingMovies = const [],
+      {
+        this.getNowPlayingMovies = const [],
       this.getNowPlayingMoviesState = RequestStates.loading,
-      this.message = ''});
+      this.message = ''
+      });
 }

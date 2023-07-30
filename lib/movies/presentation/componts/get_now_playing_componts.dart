@@ -12,6 +12,9 @@ class GetNowPlayingMovieComponent extends StatelessWidget {
           child: CarouselSlider(
             options: CarouselOptions(
               height: 400.0,
+              autoPlay: true,
+
+              scrollPhysics: const BouncingScrollPhysics(),
               viewportFraction: 1.0,
               onPageChanged: (index, reason) {},
             ),
@@ -46,6 +49,7 @@ class GetNowPlayingMovieComponent extends StatelessWidget {
                           height: 560.0,
                           imageUrl: ApiConstance.imageUrl(item.backdropPath),
                           fit: BoxFit.cover,
+
                         ),
                       ),
                       Align(
