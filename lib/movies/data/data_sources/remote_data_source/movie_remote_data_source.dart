@@ -4,6 +4,7 @@ abstract class BaseRemoteMovieDataSource {
   Future<List<MovieModel>> getNowPlayingMovie();
   Future<List<MovieModel>> getPopularMovie();
   Future<List<MovieModel>> getTopRatedMovie();
+  Future<List<MovieModel>> getTvTrendingMovie();
 }
 
 class MovieRemoteDataSource extends BaseRemoteMovieDataSource {
@@ -43,6 +44,19 @@ class MovieRemoteDataSource extends BaseRemoteMovieDataSource {
   Future<List<MovieModel>> getTopRatedMovie() async {
     // TODO: implement getTpoRatedMovie
     final response = await dio.get(ApiConstance.getTopRatedMoviePath);
+    if (response.statusCode == 200) {
+      return List<MovieModel>.from((response.data['results'] as List)
+          .map((e) => MovieModel.fromJson(e)));
+    } else {
+      return throw (ServerException(
+          errorMessageModel: ErrorMessageModel.fromJson(response.data)));
+    }
+  }
+
+  @override
+  Future<List<MovieModel>> getTvTrendingMovie() async {
+    // TODO: implement getTpoRatedMovie
+    final response = await dio.get(ApiConstance.getTvTrendingMoviePath);
     if (response.statusCode == 200) {
       return List<MovieModel>.from((response.data['results'] as List)
           .map((e) => MovieModel.fromJson(e)));

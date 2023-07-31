@@ -1,19 +1,18 @@
 import 'dart:developer';
 import 'package:movie_db_bloc/core/exports/exports_files.dart';
 
-class GetNowPlayingMovieComponent extends StatelessWidget {
-  const GetNowPlayingMovieComponent({super.key});
+class GetTvTrendingMovieComponent extends StatelessWidget {
+  const GetTvTrendingMovieComponent({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MovieBloc, MoviesStates>(
       builder: (context, state) {
-        // log(state.toString());
-
-        switch (state.getNowPlayingMoviesState) {
+        log('tvvvvvvvvvvvv${state.toString()}');
+        switch (state.getTvTrendingMoviesState) {
           case RequestStates.loading:
             return const SizedBox(
-              height: 400,
+              height: 170,
               child: Center(child: CircularProgressIndicator()),
             );
           case RequestStates.loaded:
@@ -27,7 +26,7 @@ class GetNowPlayingMovieComponent extends StatelessWidget {
                   viewportFraction: 1.0,
                   onPageChanged: (index, reason) {},
                 ),
-                items: state.getNowPlayingMovies.map(
+                items: state.getTvTrendingMovies.map(
                   (item) {
                     return GestureDetector(
                       key: const Key('openMovieMinimalDetail'),

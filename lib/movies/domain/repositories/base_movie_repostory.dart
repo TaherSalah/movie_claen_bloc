@@ -8,4 +8,5 @@ abstract class BaseMovieRepository {
   Future<Either<ServerFailure, List<Movie>>> getPopularMovie();
 
   Future<Either<ServerFailure, List<Movie>>> getTopRatedMovie();
+  Future<Either<ServerFailure, List<Movie>>> getTvTrendingMovie();
 }

@@ -1,12 +1,14 @@
 import 'package:movie_db_bloc/core/exports/exports_files.dart';
+import 'package:movie_db_bloc/movies/domain/use_cases/get_tv_trending_movie_use_case.dart';
 
 class MovieBloc extends Bloc<MoviesEvents, MoviesStates> {
   final GetNowPlayingMovieUseCase getNowPlayingMovieUseCase;
   final GetPopularMovieUseCase getPopularMovieUseCase;
   final GetTopRatedMovieUseCase getTopRatedMovieUseCase;
+  final GetTvTrendingMovieUseCase getTvTrendingMovieUseCase;
 
   MovieBloc(this.getNowPlayingMovieUseCase, this.getPopularMovieUseCase,
-      this.getTopRatedMovieUseCase)
+      this.getTopRatedMovieUseCase,this.getTvTrendingMovieUseCase)
       : super(const MoviesStates()) {
     on<GetNowPlayingMoviesEvent>((event, emit) async {
       final res = await GetNowPlayingMovieUseCase(sl()).execute();
@@ -25,7 +27,6 @@ class MovieBloc extends Bloc<MoviesEvents, MoviesStates> {
                 ))
               });
     });
-
     on<GetPopularMoviesEvent>((event, emit) async {
       final res = await GetPopularMovieUseCase(sl()).execute();
       res.fold(
@@ -54,6 +55,21 @@ class MovieBloc extends Bloc<MoviesEvents, MoviesStates> {
                 emit(state.copyWith(
                     getTopRatedMovies: success,
                     getTopRatedMoviesState: RequestStates.loaded))
+              });
+    });
+    on<GetTvTrendingMoviesEvent>((event, emit) async {
+      final res = await GetTvTrendingMovieUseCase(sl()).execute();
+      res.fold(
+          (failure) => {
+                /////// copy with take new states //////
+                emit(state.copyWith(
+                    getTvTrendingMoviesState: RequestStates.error,
+                    tvTrendingMessage: failure.message))
+              },
+          (success) => {
+                emit(state.copyWith(
+                    getTvTrendingMovies: success,
+                    getTvTrendingMoviesState: RequestStates.loaded))
               });
     });
 

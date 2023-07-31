@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:movie_db_bloc/core/exports/exports_files.dart';
 
 class GetTopRatedMovieComponent extends StatelessWidget {
@@ -7,6 +9,14 @@ class GetTopRatedMovieComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<MovieBloc, MoviesStates>(
       builder: (context, state) {
+        log('top reated states ${state.toString()}');
+        switch (state.getTopRatedMoviesState) {
+          case RequestStates.loading:
+            return const SizedBox(
+              height: 170,
+              child: Center(child: CircularProgressIndicator()),
+            );
+          case RequestStates.loaded:
         return FadeIn(
           duration: const Duration(milliseconds: 500),
           child: SizedBox(
@@ -53,6 +63,8 @@ class GetTopRatedMovieComponent extends StatelessWidget {
             ),
           ),
         );
+          case RequestStates.error:
+            return Text('errrrrrrrrrrrrrrrrrrrrrrrrrror${RequestStates.error}');}
       },
     );
   }

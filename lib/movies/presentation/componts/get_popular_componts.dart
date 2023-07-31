@@ -9,7 +9,7 @@ class GetPopularMovieComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<MovieBloc,MoviesStates>(
       builder: (context, state) {
-        log(state.toString());
+        // log(state.toString());
 
         switch (state.getPopularMoviesState) {
         case RequestStates.loading:

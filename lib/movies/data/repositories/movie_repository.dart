@@ -43,4 +43,14 @@ class MovieRepository extends BaseMovieRepository {
       return Left(ServerFailure(failure.errorMessageModel.statusMessage));
     }
   }
+  @override
+  Future<Either<ServerFailure, List<Movie>>> getTvTrendingMovie() async {
+    // TODO: implement getTopRatedMovie
+    final dataRes = await baseRemoteMovieDataSource.getTvTrendingMovie();
+    try {
+      return Right(dataRes);
+    } on ServerException catch (failure) {
+      return Left(ServerFailure(failure.errorMessageModel.statusMessage));
+    }
+  }
 }
