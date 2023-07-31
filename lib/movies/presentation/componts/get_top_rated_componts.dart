@@ -5,7 +5,7 @@ class GetTopRatedMovieComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MovieBloc,MoviesStates>(
+    return BlocBuilder<MovieBloc, MoviesStates>(
       builder: (context, state) {
         return FadeIn(
           duration: const Duration(milliseconds: 500),
@@ -15,9 +15,9 @@ class GetTopRatedMovieComponent extends StatelessWidget {
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              itemCount: moviesList.length,
+              itemCount: state.getTopRatedMovies.length,
               itemBuilder: (context, index) {
-                final movie = moviesList[index];
+                final movie = state.getTopRatedMovies[index];
                 return Container(
                   padding: const EdgeInsets.only(right: 8.0),
                   child: InkWell(
@@ -54,7 +54,6 @@ class GetTopRatedMovieComponent extends StatelessWidget {
           ),
         );
       },
-
     );
   }
 }

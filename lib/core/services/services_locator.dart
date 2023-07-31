@@ -1,6 +1,5 @@
 import 'package:get_it/get_it.dart';
 import 'package:movie_db_bloc/core/exports/exports_files.dart';
-import 'package:movie_db_bloc/movies/presentation/controller/movies_bloc.dart';
 
 /////***  create new instance from get it package  ***/////
 final sl = GetIt.instance;
@@ -9,8 +8,7 @@ class ServicesLocator {
   void init() {
     /////***  New object from Movie Bloc  ***/////
 
-
-    sl.registerFactory(() => MovieBloc(sl()));
+    sl.registerFactory(() => MovieBloc(sl(),sl(),sl()));
 
     /////***  New object from Use Case  ***/////
 
@@ -22,5 +20,8 @@ class ServicesLocator {
     /////*** New object  Get Now Playing Movie Use Case  ***/////
     sl.registerLazySingleton<GetNowPlayingMovieUseCase>(
         () => GetNowPlayingMovieUseCase(sl()));
+    sl.registerLazySingleton<GetPopularMovieUseCase>(
+        () => GetPopularMovieUseCase(sl()));
+    sl.registerLazySingleton<GetTopRatedMovieUseCase>(() =>GetTopRatedMovieUseCase(sl()) );
   }
 }

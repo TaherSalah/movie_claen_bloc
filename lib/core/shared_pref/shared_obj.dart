@@ -1,6 +1,3 @@
-
-
-
 import '../exports/exports_files.dart';
 
 class SharedObj {
@@ -9,7 +6,9 @@ class SharedObj {
     _this ??= SharedObj._();
     return _this!;
   }
+
   static SharedObj? _this;
+
   SharedObj._();
 
   SharedPreferences? prefs;

@@ -2,9 +2,7 @@ import 'package:movie_db_bloc/core/exports/exports_files.dart';
 
 abstract class BaseRemoteMovieDataSource {
   Future<List<MovieModel>> getNowPlayingMovie();
-
   Future<List<MovieModel>> getPopularMovie();
-
   Future<List<MovieModel>> getTopRatedMovie();
 }
 

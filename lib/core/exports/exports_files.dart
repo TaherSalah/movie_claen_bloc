@@ -26,7 +26,6 @@ export 'package:awesome_dialog/awesome_dialog.dart';
 export 'package:provider/provider.dart';
 export 'package:movie_db_bloc/core/shared_pref/shared_preferances.dart';
 export 'package:flutter/services.dart';
-
 export 'package:carousel_slider/carousel_slider.dart';
 export 'package:animate_do/animate_do.dart';
 export 'package:cached_network_image/cached_network_image.dart';
@@ -44,3 +43,13 @@ export 'package:movie_db_bloc/movies/presentation/controller/movies_states.dart'
 export 'package:movie_db_bloc/core/error/failure.dart';
 export 'package:movie_db_bloc/core/services/services_locator.dart';
 export 'package:movie_db_bloc/movies/presentation/controller/movies_bloc.dart';
+export 'package:movie_db_bloc/movies/domain/use_cases/get_popular_movie_use_case.dart';
+export 'package:movie_db_bloc/movies/domain/use_cases/get_top_rated_movie_use_case.dart';
+export 'package:movie_db_bloc/movies/presentation/componts/get_now_playing_componts.dart';
+export 'package:movie_db_bloc/movies/presentation/componts/get_popular_componts.dart';
+export 'package:movie_db_bloc/movies/presentation/componts/get_top_rated_componts.dart';
+export 'package:movie_db_bloc/movies/presentation/componts/head_line_movie_title.dart';
+export 'package:movie_db_bloc/movies/presentation/componts/loading_screen.dart';
+export 'package:movie_db_bloc/core/exports/exports_files.dart';
+export 'package:movie_db_bloc/movies/domain/use_cases/get_popular_movie_use_case.dart';
+export 'package:movie_db_bloc/movies/domain/use_cases/get_top_rated_movie_use_case.dart';
