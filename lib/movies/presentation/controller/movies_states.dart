@@ -1,5 +1,7 @@
 import 'package:movie_db_bloc/core/exports/exports_files.dart';
 
+import '../../domain/entities/tv_movies.dart';
+
 class MoviesStates extends Equatable {
   @override
   // TODO: implement props
@@ -34,7 +36,7 @@ class MoviesStates extends Equatable {
 
   /////*** get Tv Trending Movies states  ***/////
 
-  final List<Movie> getTvTrendingMovies;
+  final List<TvMovie> getTvTrendingMovies;
   final RequestStates getTvTrendingMoviesState;
   final String tvTrendingMessage;
 
@@ -67,7 +69,7 @@ class MoviesStates extends Equatable {
     List<Movie>? getTopRatedMovies,
     RequestStates? getTopRatedMoviesState,
     String? topRatedMessage,
-    List<Movie>? getTvTrendingMovies,
+    List<TvMovie>? getTvTrendingMovies,
     RequestStates? getTvTrendingMoviesState,
     String? tvTrendingMessage,
   }) {

@@ -31,7 +31,6 @@ class MainMoviesScreen extends StatelessWidget {
     onTap: () {},
     ),
     const GetTopRatedMovieComponent(),
-    const SizedBox(height: 50.0),
     HeadLineMovieTitle(
     title: 'Tv Trending',
     onTap: () {},

@@ -1,6 +1,7 @@
 
 import 'package:dartz/dartz.dart';
 import 'package:movie_db_bloc/core/exports/exports_files.dart';
+import 'package:movie_db_bloc/movies/domain/entities/tv_movies.dart';
 
 class MovieRepository extends BaseMovieRepository {
   final BaseRemoteMovieDataSource baseRemoteMovieDataSource;
@@ -44,7 +45,7 @@ class MovieRepository extends BaseMovieRepository {
     }
   }
   @override
-  Future<Either<ServerFailure, List<Movie>>> getTvTrendingMovie() async {
+  Future<Either<ServerFailure, List<TvMovie>>> getTvTrendingMovie() async {
     // TODO: implement getTopRatedMovie
     final dataRes = await baseRemoteMovieDataSource.getTvTrendingMovie();
     try {
