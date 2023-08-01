@@ -26,6 +26,26 @@ class GetNowPlayingMovieComponent extends StatelessWidget {
                   scrollPhysics: const BouncingScrollPhysics(),
                   viewportFraction: 1.0,
                   onPageChanged: (index, reason) {},
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 ),
                 items: state.getNowPlayingMovies.map(
                   (item) {
