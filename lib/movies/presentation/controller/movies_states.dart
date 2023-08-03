@@ -17,7 +17,10 @@ class MoviesStates extends Equatable {
         topRatedMessage,
         getTvTrendingMovies,
         getTvTrendingMoviesState,
-        tvTrendingMessage
+        tvTrendingMessage,
+        getPersonTrendingMovies,
+        getPersonTrendingMoviesState,
+        personTrendingMessage,
       ];
 
 /////*** get Now Playing Movies states  ***/////
@@ -26,22 +29,24 @@ class MoviesStates extends Equatable {
   final String getNowPlayingMessage;
 
   /////*** get Popular Movies states  ***/////
-
   final List<Movie> getPopularMovies;
   final RequestStates getPopularMoviesState;
   final String popularMessage;
 
   /////*** get Top Rated Movies states  ***/////
-
   final List<Movie> getTopRatedMovies;
   final RequestStates getTopRatedMoviesState;
   final String topRatedMessage;
 
   /////*** get Tv Trending Movies states  ***/////
-
   final List<TvMovie> getTvTrendingMovies;
   final RequestStates getTvTrendingMoviesState;
   final String tvTrendingMessage;
+
+  /////*** get Tv Trending Movies states  ***/////
+  final List<TvMovie> getPersonTrendingMovies;
+  final RequestStates getPersonTrendingMoviesState;
+  final String personTrendingMessage;
 
   const MoviesStates({
     /////*** get now playing  Movies states  ***/////
@@ -60,6 +65,10 @@ class MoviesStates extends Equatable {
     this.getTvTrendingMovies = const [],
     this.getTvTrendingMoviesState = RequestStates.loading,
     this.tvTrendingMessage = '',
+    /////*** get Person Trending Movies states  ***/////
+    this.getPersonTrendingMovies = const [],
+    this.getPersonTrendingMoviesState = RequestStates.loading,
+    this.personTrendingMessage = '',
   });
 
   MoviesStates copyWith({
@@ -75,6 +84,9 @@ class MoviesStates extends Equatable {
     List<TvMovie>? getTvTrendingMovies,
     RequestStates? getTvTrendingMoviesState,
     String? tvTrendingMessage,
+    List<TvMovie>? getPersonTrendingMovies,
+    RequestStates? getPersonTrendingMoviesState,
+    String? personTrendingMessage,
   }) {
     return MoviesStates(
       ///////////////////// add here new data /// null //// add data from obj ////////

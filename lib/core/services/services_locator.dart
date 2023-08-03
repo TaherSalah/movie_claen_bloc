@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:movie_db_bloc/core/exports/exports_files.dart';
+import 'package:movie_db_bloc/movies/domain/use_cases/get_person_movie_use_case.dart';
 import 'package:movie_db_bloc/movies/domain/use_cases/get_tv_trending_movie_use_case.dart';
 
 /////***  create new instance from get it package  ***/////
@@ -27,5 +28,7 @@ class ServicesLocator {
         () => GetTopRatedMovieUseCase(sl()));
     sl.registerLazySingleton<GetTvTrendingMovieUseCase>(
         () => GetTvTrendingMovieUseCase(sl()));
+    sl.registerLazySingleton<GetPersonMovieUseCase>(
+        () => GetPersonMovieUseCase(sl()));
   }
 }

@@ -21,3 +21,6 @@ class GetTopRatedMoviesEvent extends MoviesEvents {
 class GetTvTrendingMoviesEvent extends MoviesEvents {
   const GetTvTrendingMoviesEvent();
 }
+class GetPersonTrendingMoviesEvent extends MoviesEvents {
+  const GetPersonTrendingMoviesEvent();
+}

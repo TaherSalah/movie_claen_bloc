@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:movie_db_bloc/core/exports/exports_files.dart';
+import 'package:movie_db_bloc/movies/domain/use_cases/get_person_movie_use_case.dart';
 import 'package:movie_db_bloc/movies/domain/use_cases/get_tv_trending_movie_use_case.dart';
 
 class MovieBloc extends Bloc<MoviesEvents, MoviesStates> {
@@ -16,6 +17,7 @@ class MovieBloc extends Bloc<MoviesEvents, MoviesStates> {
     on<GetPopularMoviesEvent>(_GetPopularMoviesEvent);
     on<GetTopRatedMoviesEvent>(_GetTopRatedMoviesEvent);
     on<GetTvTrendingMoviesEvent>(_GetTvTrendingMoviesEvent);
+    on<GetPersonTrendingMoviesEvent>(_GetPersonTrendingMoviesEvent);
   }
 
   FutureOr<void> _GetNowPlayingMoviesEvent(
@@ -86,5 +88,16 @@ class MovieBloc extends Bloc<MoviesEvents, MoviesStates> {
                   getTvTrendingMovies: success,
                   getTvTrendingMoviesState: RequestStates.loaded))
             });
+  }
+
+  FutureOr<void> _GetPersonTrendingMoviesEvent(GetPersonTrendingMoviesEvent event, Emitter<MoviesStates> emit)async {
+    final res=await GetPersonMovieUseCase(sl()).execute();
+    res.fold((failure) => {
+      emit(
+        state.copyWith(
+
+        )
+      ),
+    }, (success) => {});
   }
 }
