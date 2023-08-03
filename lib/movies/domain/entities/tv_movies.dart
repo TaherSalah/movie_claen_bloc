@@ -53,21 +53,4 @@ class TvMovie extends Equatable {
         voteCount,
         originCountry
       ];
-
-// Results.fromJson(Map<String, dynamic> json) {
-//   adult = json['adult'];
-//   backdropPath = json['backdrop_path'];
-//   id = json['id'];
-//   name = json['name'];
-//   originalLanguage = json['original_language'];
-//   originalName = json['original_name'];
-//   overview = json['overview'];
-//   posterPath = json['poster_path'];
-//   mediaType = json['media_type'];
-//   genreIds = json['genre_ids'].cast<int>();
-//   popularity = json['popularity'];
-//   firstAirDate = json['first_air_date'];
-//   voteAverage = json['vote_average'];
-//   voteCount = json['vote_count'];
-//   originCountry = json['origin_country'].cast<String>();
 }

@@ -7,40 +7,38 @@ class MainMoviesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        create: (context) =>
-        sl<MovieBloc>()
-          ..add(const GetNowPlayingMoviesEvent())..add(
-            const GetPopularMoviesEvent())..add(
-            const GetTopRatedMoviesEvent())..add(
-            const GetTvTrendingMoviesEvent()),
-    child: BlocBuilder<MovieBloc, MoviesStates>(builder: (context, state) {
-    return Scaffold(
-    body: SingleChildScrollView(
-    key: const Key('movieScrollView'),
-    child: Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-    const GetNowPlayingMovieComponent(),
-    HeadLineMovieTitle(
-    title: 'Popular',
-    onTap: () {},
-    ),
-    const GetPopularMovieComponent(),
-    HeadLineMovieTitle(
-    title: 'Top Rated',
-    onTap: () {},
-    ),
-    const GetTopRatedMovieComponent(),
-    HeadLineMovieTitle(
-    title: 'Tv Trending',
-    onTap: () {},
-    ),
-    const GetTvTrendingMovieComponent()
-    ],
-    ),
-    ),
-    );
-    })
-    );
+        create: (context) => sl<MovieBloc>()
+          ..add(const GetNowPlayingMoviesEvent())
+          ..add(const GetPopularMoviesEvent())
+          ..add(const GetTopRatedMoviesEvent())
+          ..add(const GetTvTrendingMoviesEvent()),
+        child: BlocBuilder<MovieBloc, MoviesStates>(builder: (context, state) {
+          return Scaffold(
+            body: SingleChildScrollView(
+              key: const Key('movieScrollView'),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const GetNowPlayingMovieComponent(),
+                  HeadLineMovieTitle(
+                    title: 'Popular',
+                    onTap: () {},
+                  ),
+                  const GetPopularMovieComponent(),
+                  HeadLineMovieTitle(
+                    title: 'Top Rated',
+                    onTap: () {},
+                  ),
+                  const GetTopRatedMovieComponent(),
+                  HeadLineMovieTitle(
+                    title: 'Tv Trending',
+                    onTap: () {},
+                  ),
+                  const GetTvTrendingMovieComponent()
+                ],
+              ),
+            ),
+          );
+        }));
   }
 }

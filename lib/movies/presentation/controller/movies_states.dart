@@ -14,7 +14,10 @@ class MoviesStates extends Equatable {
         popularMessage,
         getTopRatedMovies,
         getTopRatedMoviesState,
-        topRatedMessage
+        topRatedMessage,
+        getTvTrendingMovies,
+        getTvTrendingMoviesState,
+        tvTrendingMessage
       ];
 
 /////*** get Now Playing Movies states  ***/////
@@ -79,14 +82,17 @@ class MoviesStates extends Equatable {
       getNowPlayingMoviesState:
           getNowPlayingMoviesState ?? this.getNowPlayingMoviesState,
       getNowPlayingMessage: getNowPlayingMessage ?? this.getNowPlayingMessage,
+      ////////////////////////////////*************//////////////////////////////
       getPopularMovies: getPopularMovies ?? this.getPopularMovies,
       getPopularMoviesState:
           getPopularMoviesState ?? this.getPopularMoviesState,
       popularMessage: popularMessage ?? this.popularMessage,
+      ////////////////////////////////*************//////////////////////////////
       getTopRatedMovies: getTopRatedMovies ?? this.getTopRatedMovies,
       getTopRatedMoviesState:
           getTopRatedMoviesState ?? this.getTopRatedMoviesState,
       topRatedMessage: topRatedMessage ?? this.topRatedMessage,
+      ////////////////////////////////*************//////////////////////////////
       getTvTrendingMovies: getTvTrendingMovies ?? this.getTvTrendingMovies,
       getTvTrendingMoviesState:
           getTvTrendingMoviesState ?? this.getTvTrendingMoviesState,

@@ -8,7 +8,7 @@ class GetNowPlayingMovieComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<MovieBloc, MoviesStates>(
       builder: (context, state) {
-        // log(state.toString());
+        print('nowwwwwwwwwwwwwwwwwwwwwwwww${state.getNowPlayingMovies}');
 
         switch (state.getNowPlayingMoviesState) {
           case RequestStates.loading:

@@ -8,6 +8,9 @@ abstract class BaseRemoteMovieDataSource {
   Future<List<TvMovieModel>> getTvTrendingMovie();
 }
 
+
+
+
 class MovieRemoteDataSource extends BaseRemoteMovieDataSource {
   final Dio dio = Dio();
 
@@ -59,6 +62,7 @@ class MovieRemoteDataSource extends BaseRemoteMovieDataSource {
     // TODO: implement getTpoRatedMovie
     final response = await dio.get(ApiConstance.getTvTrendingMoviePath);
     if (response.statusCode == 200) {
+      print('ddddddddddddddddddddddd${response.data}');
       return List<TvMovieModel>.from((response.data['results'] as List)
           .map((e) => TvMovieModel.fromJson(e)));
     } else {
