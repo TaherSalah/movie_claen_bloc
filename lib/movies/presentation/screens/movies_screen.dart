@@ -1,4 +1,5 @@
 import 'package:movie_db_bloc/core/exports/exports_files.dart';
+import 'package:movie_db_bloc/movies/presentation/componts/get_person_componts.dart';
 import 'package:movie_db_bloc/movies/presentation/componts/get_tv_trending_componts.dart';
 
 class MainMoviesScreen extends StatelessWidget {
@@ -11,7 +12,8 @@ class MainMoviesScreen extends StatelessWidget {
           ..add(const GetNowPlayingMoviesEvent())
           ..add(const GetPopularMoviesEvent())
           ..add(const GetTopRatedMoviesEvent())
-          ..add(const GetTvTrendingMoviesEvent()),
+          ..add(const GetTvTrendingMoviesEvent())
+          ..add(const GetPersonTrendingMoviesEvent()),
         child: BlocBuilder<MovieBloc, MoviesStates>(builder: (context, state) {
           return Scaffold(
             body: SingleChildScrollView(
@@ -34,7 +36,12 @@ class MainMoviesScreen extends StatelessWidget {
                     title: 'Tv Trending',
                     onTap: () {},
                   ),
-                  const GetTvTrendingMovieComponent()
+                  const GetTvTrendingMovieComponent(),
+                  HeadLineMovieTitle(
+                    title: 'Person Trending',
+                    onTap: () {},
+                  ),
+                  const GetPersonMovieComponent()
                 ],
               ),
             ),

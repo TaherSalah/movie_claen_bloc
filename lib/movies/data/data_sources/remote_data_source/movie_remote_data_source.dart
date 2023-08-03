@@ -64,7 +64,7 @@ class MovieRemoteDataSource extends BaseRemoteMovieDataSource {
     // TODO: implement getTpoRatedMovie
     final response = await dio.get(ApiConstance.getTvTrendingMoviePath);
     if (response.statusCode == 200) {
-      print('ddddddddddddddddddddddd${response.data}');
+      // print('ddddddddddddddddddddddd${response.data}');
       return List<TvMovieModel>.from((response.data['results'] as List)
           .map((e) => TvMovieModel.fromJson(e)));
     } else {

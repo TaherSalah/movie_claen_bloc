@@ -1,4 +1,6 @@
 import 'package:movie_db_bloc/core/exports/exports_files.dart';
+import 'package:movie_db_bloc/movies/data/models/person_movie_model.dart';
+import 'package:movie_db_bloc/movies/domain/entities/person_movies.dart';
 
 import '../../domain/entities/tv_movies.dart';
 
@@ -44,7 +46,7 @@ class MoviesStates extends Equatable {
   final String tvTrendingMessage;
 
   /////*** get Tv Trending Movies states  ***/////
-  final List<TvMovie> getPersonTrendingMovies;
+  final List<PersonMovies> getPersonTrendingMovies;
   final RequestStates getPersonTrendingMoviesState;
   final String personTrendingMessage;
 
@@ -84,7 +86,7 @@ class MoviesStates extends Equatable {
     List<TvMovie>? getTvTrendingMovies,
     RequestStates? getTvTrendingMoviesState,
     String? tvTrendingMessage,
-    List<TvMovie>? getPersonTrendingMovies,
+    List<PersonMovies>? getPersonTrendingMovies,
     RequestStates? getPersonTrendingMoviesState,
     String? personTrendingMessage,
   }) {
@@ -109,6 +111,13 @@ class MoviesStates extends Equatable {
       getTvTrendingMoviesState:
           getTvTrendingMoviesState ?? this.getTvTrendingMoviesState,
       tvTrendingMessage: tvTrendingMessage ?? this.tvTrendingMessage,
+      ////////////////////////////////*************//////////////////////////////
+      getPersonTrendingMovies:
+          getPersonTrendingMovies ?? this.getPersonTrendingMovies,
+      getPersonTrendingMoviesState:
+          getPersonTrendingMoviesState ?? this.getPersonTrendingMoviesState,
+      personTrendingMessage:
+          personTrendingMessage ?? this.personTrendingMessage,
     );
   }
 }

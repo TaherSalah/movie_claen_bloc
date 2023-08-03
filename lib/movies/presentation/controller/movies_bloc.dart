@@ -90,14 +90,19 @@ class MovieBloc extends Bloc<MoviesEvents, MoviesStates> {
             });
   }
 
-  FutureOr<void> _GetPersonTrendingMoviesEvent(GetPersonTrendingMoviesEvent event, Emitter<MoviesStates> emit)async {
-    final res=await GetPersonMovieUseCase(sl()).execute();
-    res.fold((failure) => {
-      emit(
-        state.copyWith(
-
-        )
-      ),
-    }, (success) => {});
+  FutureOr<void> _GetPersonTrendingMoviesEvent(
+      GetPersonTrendingMoviesEvent event, Emitter<MoviesStates> emit) async {
+    final res = await GetPersonMovieUseCase(sl()).execute();
+    res.fold(
+        (failure) => {
+              emit(state.copyWith(
+                  getPersonTrendingMoviesState: RequestStates.error,
+                  personTrendingMessage: failure.message)),
+            },
+        (success) => {
+              emit(state.copyWith(
+                  getPersonTrendingMovies: success,
+                  getPersonTrendingMoviesState: RequestStates.loaded))
+            });
   }
 }
