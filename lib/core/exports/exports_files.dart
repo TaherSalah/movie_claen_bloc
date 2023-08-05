@@ -50,6 +50,8 @@ export 'package:movie_db_bloc/movies/presentation/componts/get_popular_componts.
 export 'package:movie_db_bloc/movies/presentation/componts/get_top_rated_componts.dart';
 export 'package:movie_db_bloc/movies/presentation/componts/head_line_movie_title.dart';
 export 'package:movie_db_bloc/movies/presentation/componts/loading_screen.dart';
-export 'package:movie_db_bloc/core/exports/exports_files.dart';
-export 'package:movie_db_bloc/movies/domain/use_cases/get_popular_movie_use_case.dart';
-export 'package:movie_db_bloc/movies/domain/use_cases/get_top_rated_movie_use_case.dart';
+export 'package:movie_db_bloc/movies/domain/entities/person_movies.dart';
+export 'package:movie_db_bloc/movies/domain/entities/tv_movies.dart';
+export 'package:movie_db_bloc/movies/presentation/componts/get_tv_trending_componts.dart';
+export 'package:movie_db_bloc/movies/domain/use_cases/get_person_movie_use_case.dart';
+export 'package:movie_db_bloc/movies/domain/use_cases/get_tv_trending_movie_use_case.dart';

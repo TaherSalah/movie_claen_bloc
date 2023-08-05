@@ -1,8 +1,6 @@
 import 'package:movie_db_bloc/core/exports/exports_files.dart';
-import 'package:movie_db_bloc/movies/data/models/person_movie_model.dart';
-import 'package:movie_db_bloc/movies/domain/entities/person_movies.dart';
 
-import '../../domain/entities/tv_movies.dart';
+
 
 class MoviesStates extends Equatable {
   @override
@@ -72,7 +70,8 @@ class MoviesStates extends Equatable {
     this.getPersonTrendingMoviesState = RequestStates.loading,
     this.personTrendingMessage = '',
   });
-
+  /// TODO: copy with  method
+///*** copy with  for resolve problem  when after create new object from movie state  ***///
   MoviesStates copyWith({
     List<Movie>? getNowPlayingMovies,
     RequestStates? getNowPlayingMoviesState,
@@ -93,31 +92,24 @@ class MoviesStates extends Equatable {
     return MoviesStates(
       ///////////////////// add here new data /// null //// add data from obj ////////
       getNowPlayingMovies: getNowPlayingMovies ?? this.getNowPlayingMovies,
-      getNowPlayingMoviesState:
-          getNowPlayingMoviesState ?? this.getNowPlayingMoviesState,
+      getNowPlayingMoviesState: getNowPlayingMoviesState ?? this.getNowPlayingMoviesState,
       getNowPlayingMessage: getNowPlayingMessage ?? this.getNowPlayingMessage,
       ////////////////////////////////*************//////////////////////////////
       getPopularMovies: getPopularMovies ?? this.getPopularMovies,
-      getPopularMoviesState:
-          getPopularMoviesState ?? this.getPopularMoviesState,
+      getPopularMoviesState: getPopularMoviesState ?? this.getPopularMoviesState,
       popularMessage: popularMessage ?? this.popularMessage,
       ////////////////////////////////*************//////////////////////////////
       getTopRatedMovies: getTopRatedMovies ?? this.getTopRatedMovies,
-      getTopRatedMoviesState:
-          getTopRatedMoviesState ?? this.getTopRatedMoviesState,
+      getTopRatedMoviesState: getTopRatedMoviesState ?? this.getTopRatedMoviesState,
       topRatedMessage: topRatedMessage ?? this.topRatedMessage,
       ////////////////////////////////*************//////////////////////////////
       getTvTrendingMovies: getTvTrendingMovies ?? this.getTvTrendingMovies,
-      getTvTrendingMoviesState:
-          getTvTrendingMoviesState ?? this.getTvTrendingMoviesState,
+      getTvTrendingMoviesState: getTvTrendingMoviesState ?? this.getTvTrendingMoviesState,
       tvTrendingMessage: tvTrendingMessage ?? this.tvTrendingMessage,
       ////////////////////////////////*************//////////////////////////////
-      getPersonTrendingMovies:
-          getPersonTrendingMovies ?? this.getPersonTrendingMovies,
-      getPersonTrendingMoviesState:
-          getPersonTrendingMoviesState ?? this.getPersonTrendingMoviesState,
-      personTrendingMessage:
-          personTrendingMessage ?? this.personTrendingMessage,
+      getPersonTrendingMovies: getPersonTrendingMovies ?? this.getPersonTrendingMovies,
+      getPersonTrendingMoviesState: getPersonTrendingMoviesState ?? this.getPersonTrendingMoviesState,
+      personTrendingMessage: personTrendingMessage ?? this.personTrendingMessage,
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:movie_db_bloc/core/exports/exports_files.dart';
-import 'package:movie_db_bloc/movies/presentation/componts/get_person_componts.dart';
-import 'package:movie_db_bloc/movies/presentation/componts/get_tv_trending_componts.dart';
+
+
+
 
 class MainMoviesScreen extends StatelessWidget {
   const MainMoviesScreen({Key? key}) : super(key: key);
