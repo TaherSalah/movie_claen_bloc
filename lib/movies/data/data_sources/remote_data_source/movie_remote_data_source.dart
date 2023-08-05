@@ -64,7 +64,6 @@ class MovieRemoteDataSource extends BaseRemoteMovieDataSource {
     // TODO: implement getTpoRatedMovie
     final response = await dio.get(ApiConstance.getTvTrendingMoviePath);
     if (response.statusCode == 200) {
-      // print('ddddddddddddddddddddddd${response.data}');
       return List<TvMovieModel>.from((response.data['results'] as List)
           .map((e) => TvMovieModel.fromJson(e)));
     } else {
@@ -78,7 +77,6 @@ class MovieRemoteDataSource extends BaseRemoteMovieDataSource {
     // TODO: implement getPersonTrendingMovie
     final response = await dio.get(ApiConstance.getPersonTrendingMoviePath);
     if (response.statusCode == 200) {
-      print('person modellllll ${response.data}');
       return List<PersonModel>.from((response.data['results'] as List)
           .map((e) => PersonModel.fromJson(e)));
     } else {

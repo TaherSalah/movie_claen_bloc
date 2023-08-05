@@ -1,5 +1,7 @@
-import 'dart:developer';
 import 'package:movie_db_bloc/core/exports/exports_files.dart';
+
+
+
 
 class GetNowPlayingMovieComponent extends StatelessWidget {
   const GetNowPlayingMovieComponent({super.key});
@@ -7,9 +9,11 @@ class GetNowPlayingMovieComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MovieBloc, MoviesStates>(
+      ///*** for two rebuild to widget ***///
+      buildWhen: (previous, current) =>
+          previous.getNowPlayingMoviesState != current.getNowPlayingMoviesState,
       builder: (context, state) {
-        print('nowwwwwwwwwwwwwwwwwwwwwwwww${state.getNowPlayingMovies}');
-
+        print('GetNowPlayingMovieComponent');
         switch (state.getNowPlayingMoviesState) {
           case RequestStates.loading:
             return const SizedBox(
@@ -26,26 +30,6 @@ class GetNowPlayingMovieComponent extends StatelessWidget {
                   scrollPhysics: const BouncingScrollPhysics(),
                   viewportFraction: 1.0,
                   onPageChanged: (index, reason) {},
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 ),
                 items: state.getNowPlayingMovies.map(
                   (item) {

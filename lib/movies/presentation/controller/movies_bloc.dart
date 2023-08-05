@@ -20,10 +20,11 @@ class MovieBloc extends Bloc<MoviesEvents, MoviesStates> {
     on<GetPersonTrendingMoviesEvent>(_GetPersonTrendingMoviesEvent);
   }
 
+
+  // ignore: non_constant_identifier_names
   FutureOr<void> _GetNowPlayingMoviesEvent(
       event, Emitter<MoviesStates> emit) async {
     final res = await GetNowPlayingMovieUseCase(sl()).execute();
-
     /////*** for change the state error and success ***////
     res.fold(
         (failure) => {
@@ -39,6 +40,7 @@ class MovieBloc extends Bloc<MoviesEvents, MoviesStates> {
             });
   }
 
+  // ignore: non_constant_identifier_names
   FutureOr<void> _GetPopularMoviesEvent(
       GetPopularMoviesEvent event, Emitter<MoviesStates> emit) async {
     final res = await GetPopularMovieUseCase(sl()).execute();
@@ -56,6 +58,7 @@ class MovieBloc extends Bloc<MoviesEvents, MoviesStates> {
             });
   }
 
+  // ignore: non_constant_identifier_names
   FutureOr<void> _GetTopRatedMoviesEvent(
       GetTopRatedMoviesEvent event, Emitter<MoviesStates> emit) async {
     final res = await GetTopRatedMovieUseCase(sl()).execute();
@@ -73,6 +76,7 @@ class MovieBloc extends Bloc<MoviesEvents, MoviesStates> {
             });
   }
 
+  // ignore: non_constant_identifier_names
   FutureOr<void> _GetTvTrendingMoviesEvent(
       GetTvTrendingMoviesEvent event, Emitter<MoviesStates> emit) async {
     final res = await GetTvTrendingMovieUseCase(sl()).execute();
@@ -90,6 +94,7 @@ class MovieBloc extends Bloc<MoviesEvents, MoviesStates> {
             });
   }
 
+  // ignore: non_constant_identifier_names
   FutureOr<void> _GetPersonTrendingMoviesEvent(
       GetPersonTrendingMoviesEvent event, Emitter<MoviesStates> emit) async {
     final res = await GetPersonMovieUseCase(sl()).execute();

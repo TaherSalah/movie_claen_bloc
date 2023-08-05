@@ -1,6 +1,6 @@
-import 'dart:developer';
-
 import 'package:movie_db_bloc/core/exports/exports_files.dart';
+
+
 
 class GetTvTrendingMovieComponent extends StatelessWidget {
   const GetTvTrendingMovieComponent({super.key});
@@ -8,8 +8,11 @@ class GetTvTrendingMovieComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MovieBloc, MoviesStates>(
+      ///*** for two rebuild to widget ***///
+      buildWhen: (previous, current) =>
+          previous.getTvTrendingMoviesState != current.getTvTrendingMoviesState,
       builder: (context, state) {
-        log('tvvvvvvvv states ${state.getTvTrendingMoviesState}');
+        print('GetTvTrendingMovieComponent');
         switch (state.getTvTrendingMoviesState) {
           case RequestStates.loading:
             return const SizedBox(
@@ -24,7 +27,7 @@ class GetTvTrendingMovieComponent extends StatelessWidget {
                 shrinkWrap: true,
                 itemCount: 6,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisSpacing: 10,
+                    crossAxisSpacing: 10,
                     mainAxisSpacing: 15,
                     crossAxisCount: 2),
                 itemBuilder: (context, index) {
