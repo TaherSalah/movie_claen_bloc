@@ -1,3 +1,4 @@
+import 'package:lottie/lottie.dart';
 import 'package:movie_db_bloc/core/exports/exports_files.dart';
 
 
@@ -14,8 +15,6 @@ class GetPersonMovieComponent extends StatelessWidget {
           current.getPersonTrendingMoviesState,
       builder: (context, state) {
         print('GetPersonMovieComponent');
-        print(state.getPersonTrendingMoviesState);
-
         switch (state.getPersonTrendingMoviesState) {
           case RequestStates.loading:
             return const SizedBox(
@@ -26,7 +25,7 @@ class GetPersonMovieComponent extends StatelessWidget {
             return FadeIn(
               duration: const Duration(milliseconds: 500),
               child: SizedBox(
-                height: 170.0,
+                height: 120,
                 child: ListView.builder(
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
@@ -42,7 +41,7 @@ class GetPersonMovieComponent extends StatelessWidget {
                         },
                         child: ClipRRect(
                             borderRadius:
-                                const BorderRadius.all(Radius.circular(8.0)),
+                                const BorderRadius.all(Radius.circular(30.0)),
                             child: CachedNetworkImage(
                               width: 120.0,
                               fit: BoxFit.cover,
@@ -61,8 +60,11 @@ class GetPersonMovieComponent extends StatelessWidget {
                                 ),
                               ),
                               errorWidget: (context, url, error) =>
-                                  const Icon(Icons.error),
-                            )),
+                                  Center(
+                                    child: Lottie.asset("assets/images/not_found.json"),
+                                  ),
+                            )
+                        ),
                       ),
                     );
                   },
