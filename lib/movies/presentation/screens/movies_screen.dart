@@ -1,4 +1,5 @@
 import 'package:movie_db_bloc/core/exports/exports_files.dart';
+import 'package:movie_db_bloc/movies/presentation/componts/get_person_componts.dart';
 
 
 
@@ -37,11 +38,11 @@ class MainMoviesScreen extends StatelessWidget {
                   onTap: () {},
                 ),
                 const GetTvTrendingMovieComponent(),
-                // HeadLineMovieTitle(
-                //   title: 'Person Trending',
-                //   onTap: () {},
-                // ),
-                // const GetPersonMovieComponent()
+                HeadLineMovieTitle(
+                  title: 'Person Trending',
+                  onTap: () {},
+                ),
+                const GetPersonMovieComponent()
               ],
             ),
           ),

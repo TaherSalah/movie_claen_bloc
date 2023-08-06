@@ -14,6 +14,7 @@ class GetPersonMovieComponent extends StatelessWidget {
           current.getPersonTrendingMoviesState,
       builder: (context, state) {
         print('GetPersonMovieComponent');
+        print(state.getPersonTrendingMoviesState);
 
         switch (state.getPersonTrendingMoviesState) {
           case RequestStates.loading:

@@ -77,6 +77,7 @@ class MovieRemoteDataSource extends BaseRemoteMovieDataSource {
     // TODO: implement getPersonTrendingMovie
     final response = await dio.get(ApiConstance.getPersonTrendingMoviePath);
     if (response.statusCode == 200) {
+      print('rerererererer ${response.data['results']}');
       return List<PersonModel>.from((response.data['results'] as List)
           .map((e) => PersonModel.fromJson(e)));
     } else {
