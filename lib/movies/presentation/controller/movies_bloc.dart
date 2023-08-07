@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:movie_db_bloc/core/exports/exports_files.dart';
-
+import 'package:movie_db_bloc/core/use_cases/base_use_case.dart';
 
 class MovieBloc extends Bloc<MoviesEvents, MoviesStates> {
   final GetNowPlayingMovieUseCase getNowPlayingMovieUseCase;
@@ -19,12 +19,11 @@ class MovieBloc extends Bloc<MoviesEvents, MoviesStates> {
     on<GetPersonTrendingMoviesEvent>(_GetPersonTrendingMoviesEvent);
   }
 
-
   // ignore: non_constant_identifier_names
   FutureOr<void> _GetNowPlayingMoviesEvent(
       event, Emitter<MoviesStates> emit) async {
-    final res = await GetNowPlayingMovieUseCase(sl()).call()
-     ;
+    final res =
+        await GetNowPlayingMovieUseCase(sl()).call(const NoParameters());
     /////*** for change the state error and success ***////
     res.fold(
         (failure) => {
@@ -43,7 +42,7 @@ class MovieBloc extends Bloc<MoviesEvents, MoviesStates> {
   // ignore: non_constant_identifier_names
   FutureOr<void> _GetPopularMoviesEvent(
       GetPopularMoviesEvent event, Emitter<MoviesStates> emit) async {
-    final res = await GetPopularMovieUseCase(sl()).call();
+    final res = await GetPopularMovieUseCase(sl()).call(const NoParameters());
     res.fold(
         (failure) => {
               /////// copy with take new states //////
@@ -61,7 +60,7 @@ class MovieBloc extends Bloc<MoviesEvents, MoviesStates> {
   // ignore: non_constant_identifier_names
   FutureOr<void> _GetTopRatedMoviesEvent(
       GetTopRatedMoviesEvent event, Emitter<MoviesStates> emit) async {
-    final res = await GetTopRatedMovieUseCase(sl()).call();
+    final res = await GetTopRatedMovieUseCase(sl()).call(const NoParameters());
     res.fold(
         (failure) => {
               /////// copy with take new states //////
@@ -79,7 +78,8 @@ class MovieBloc extends Bloc<MoviesEvents, MoviesStates> {
   // ignore: non_constant_identifier_names
   FutureOr<void> _GetTvTrendingMoviesEvent(
       GetTvTrendingMoviesEvent event, Emitter<MoviesStates> emit) async {
-    final res = await GetTvTrendingMovieUseCase(sl()).call();
+    final res =
+        await GetTvTrendingMovieUseCase(sl()).call(const NoParameters());
     res.fold(
         (failure) => {
               /////// copy with take new states //////
@@ -97,7 +97,7 @@ class MovieBloc extends Bloc<MoviesEvents, MoviesStates> {
   // ignore: non_constant_identifier_names
   FutureOr<void> _GetPersonTrendingMoviesEvent(
       GetPersonTrendingMoviesEvent event, Emitter<MoviesStates> emit) async {
-    final res = await GetPersonMovieUseCase(sl()).call();
+    final res = await GetPersonMovieUseCase(sl()).call(const NoParameters());
     res.fold(
         (failure) => {
               emit(state.copyWith(

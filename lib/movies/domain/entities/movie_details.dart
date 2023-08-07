@@ -1,10 +1,12 @@
 import 'package:equatable/equatable.dart';
-
 import 'genres.dart';
+
+
+
+
 
 class MovieDetails extends Equatable {
   final String backdropPath;
-
   final List<Genres> genres;
   final String homepage;
   final int id;
