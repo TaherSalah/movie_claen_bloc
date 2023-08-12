@@ -1,6 +1,8 @@
 import 'package:movie_db_bloc/core/exports/exports_files.dart';
 import 'package:movie_db_bloc/movies/presentation/componts/get_person_componts.dart';
 
+import '../controller/movie_controller/movies_events.dart';
+
 
 
 

@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:movie_db_bloc/core/exports/exports_files.dart';
 import 'package:movie_db_bloc/core/use_cases/base_use_case.dart';
 
+import 'movies_events.dart';
+
 class MovieBloc extends Bloc<MoviesEvents, MoviesStates> {
   final GetNowPlayingMovieUseCase getNowPlayingMovieUseCase;
   final GetPopularMovieUseCase getPopularMovieUseCase;

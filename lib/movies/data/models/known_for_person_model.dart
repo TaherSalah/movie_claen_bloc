@@ -30,7 +30,7 @@ class KnownForPersonModel extends KnownForPerson {
         genreIds: List<int>.from(json['genre_ids'].map((e) => e)),
         popularity: json['popularity'] ?? '',
         releaseDate: json['release_date'] ?? '',
-        video: json['video'],
+        video: json['video']??false,
         voteAverage: json['vote_average'],
         voteCount: json['vote_count']);
   }
