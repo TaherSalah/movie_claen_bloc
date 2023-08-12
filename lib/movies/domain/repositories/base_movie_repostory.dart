@@ -17,5 +17,5 @@ abstract class BaseMovieRepository {
   Future<Either<ServerFailure, List<TvMovie>>> getTvTrendingMovie();
   Future<Either<ServerFailure, List<PersonMovies>>> getPersonTrendingMovie();
   Future<Either<ServerFailure, MovieDetails>> getMovieDetails(MovieDetailsPrams parameters);
-  Future <Either<Failure,List<Recommendations>>>getRecommendationsMovie(RecommendationsParameters parameters);
+  Future <Either<ServerFailure,List<Recommendations>>>getRecommendationsMovie(RecommendationsParameters parameters);
 }

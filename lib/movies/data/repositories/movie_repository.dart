@@ -73,6 +73,8 @@ class MovieRepository extends BaseMovieRepository {
     }
   }
 
+  ///*** Recommendations ***///
+
   @override
   Future<Either<ServerFailure, MovieDetails>> getMovieDetails(
       MovieDetailsPrams parameters) {
@@ -80,8 +82,10 @@ class MovieRepository extends BaseMovieRepository {
     throw UnimplementedError();
   }
 
+  ///*** Recommendations ***///
+
   @override
-  Future<Either<Failure, List<Recommendations>>> getRecommendationsMovie(
+  Future<Either<ServerFailure, List<Recommendations>>> getRecommendationsMovie(
       RecommendationsParameters parameters) async {
     // TODO: implement getRecommendationsMovie
     final dataRes =
