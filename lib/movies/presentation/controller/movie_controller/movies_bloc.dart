@@ -14,15 +14,15 @@ class MovieBloc extends Bloc<MoviesEvents, MoviesStates> {
   MovieBloc(this.getNowPlayingMovieUseCase, this.getPopularMovieUseCase,
       this.getTopRatedMovieUseCase, this.getTvTrendingMovieUseCase)
       : super(const MoviesStates()) {
-    on<GetNowPlayingMoviesEvent>(_GetNowPlayingMoviesEvent);
-    on<GetPopularMoviesEvent>(_GetPopularMoviesEvent);
-    on<GetTopRatedMoviesEvent>(_GetTopRatedMoviesEvent);
-    on<GetTvTrendingMoviesEvent>(_GetTvTrendingMoviesEvent);
-    on<GetPersonTrendingMoviesEvent>(_GetPersonTrendingMoviesEvent);
+    on<GetNowPlayingMoviesEvent>(_getNowPlayingMoviesEvent);
+    on<GetPopularMoviesEvent>(_getPopularMoviesEvent);
+    on<GetTopRatedMoviesEvent>(_getTopRatedMoviesEvent);
+    on<GetTvTrendingMoviesEvent>(_getTvTrendingMoviesEvent);
+    on<GetPersonTrendingMoviesEvent>(_getPersonTrendingMoviesEvent);
   }
 
-  // ignore: non_constant_identifier_names
-  FutureOr<void> _GetNowPlayingMoviesEvent(
+  ///*** getNowPlayingMoviesEvent method ***///
+  FutureOr<void> _getNowPlayingMoviesEvent(
       event, Emitter<MoviesStates> emit) async {
     final res =
         await GetNowPlayingMovieUseCase(sl()).call(const NoParameters());
@@ -41,8 +41,9 @@ class MovieBloc extends Bloc<MoviesEvents, MoviesStates> {
             });
   }
 
-  // ignore: non_constant_identifier_names
-  FutureOr<void> _GetPopularMoviesEvent(
+  ///*** getPopularMoviesEvent method ***///
+
+  FutureOr<void> _getPopularMoviesEvent(
       GetPopularMoviesEvent event, Emitter<MoviesStates> emit) async {
     final res = await GetPopularMovieUseCase(sl()).call(const NoParameters());
     res.fold(
@@ -59,8 +60,8 @@ class MovieBloc extends Bloc<MoviesEvents, MoviesStates> {
             });
   }
 
-  // ignore: non_constant_identifier_names
-  FutureOr<void> _GetTopRatedMoviesEvent(
+  ///*** getTopRatedMoviesEvent method ***///
+  FutureOr<void> _getTopRatedMoviesEvent(
       GetTopRatedMoviesEvent event, Emitter<MoviesStates> emit) async {
     final res = await GetTopRatedMovieUseCase(sl()).call(const NoParameters());
     res.fold(
@@ -77,8 +78,9 @@ class MovieBloc extends Bloc<MoviesEvents, MoviesStates> {
             });
   }
 
-  // ignore: non_constant_identifier_names
-  FutureOr<void> _GetTvTrendingMoviesEvent(
+  ///*** getTvTrendingMoviesEvent method ***///
+
+  FutureOr<void> _getTvTrendingMoviesEvent(
       GetTvTrendingMoviesEvent event, Emitter<MoviesStates> emit) async {
     final res =
         await GetTvTrendingMovieUseCase(sl()).call(const NoParameters());
@@ -96,8 +98,8 @@ class MovieBloc extends Bloc<MoviesEvents, MoviesStates> {
             });
   }
 
-  // ignore: non_constant_identifier_names
-  FutureOr<void> _GetPersonTrendingMoviesEvent(
+  ///*** getPersonTrendingMoviesEvent method ***///
+  FutureOr<void> _getPersonTrendingMoviesEvent(
       GetPersonTrendingMoviesEvent event, Emitter<MoviesStates> emit) async {
     final res = await GetPersonMovieUseCase(sl()).call(const NoParameters());
     res.fold(
