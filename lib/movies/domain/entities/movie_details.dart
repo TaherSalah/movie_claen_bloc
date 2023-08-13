@@ -6,7 +6,7 @@ import 'genres.dart';
 
 
 class MovieDetails extends Equatable {
-  final String backdropPath;
+  final String? backdropPath;
   final List<Genres> genres;
   final String homepage;
   final int id;
@@ -23,7 +23,7 @@ class MovieDetails extends Equatable {
   final int voteCount;
 
   const MovieDetails(
-      {required this.backdropPath,
+      { this.backdropPath,
       required this.homepage,
       required this.genres,
       required this.id,
@@ -40,7 +40,7 @@ class MovieDetails extends Equatable {
       required this.voteCount});
 
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         backdropPath,
         homepage,
         id,

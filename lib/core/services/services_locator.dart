@@ -8,7 +8,6 @@ import 'package:movie_db_bloc/movies/presentation/controller/movie_details_contr
 
 /////***  create new instance from get it package  ***/////
 final sl = GetIt.instance;
-
 class ServicesLocator {
   void init() {
     /////***  New object from Movie Bloc  ***/////

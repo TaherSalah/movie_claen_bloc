@@ -37,6 +37,7 @@ class GetNowPlayingMovieComponent extends StatelessWidget {
                       key: const Key('openMovieMinimalDetail'),
                       onTap: () {
                         // / TODO : NAVIGATE TO MOVIE DETAILS
+
                       },
                       child: Stack(
                         children: [
