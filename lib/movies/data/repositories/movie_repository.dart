@@ -11,6 +11,7 @@ class MovieRepository extends BaseMovieRepository {
   final BaseRemoteMovieDataSource baseRemoteMovieDataSource;
 
   MovieRepository(this.baseRemoteMovieDataSource);
+  ///*** Now Playing  ***///
 
   @override
   Future<Either<ServerFailure, List<Movie>>> getNowPlayingMovie() async {
@@ -25,6 +26,7 @@ class MovieRepository extends BaseMovieRepository {
       return left(ServerFailure(failure.errorMessageModel.statusMessage));
     }
   }
+  ///*** Popular ***///
 
   @override
   Future<Either<ServerFailure, List<Movie>>> getPopularMovie() async {
@@ -37,6 +39,7 @@ class MovieRepository extends BaseMovieRepository {
       return Left(ServerFailure(failure.errorMessageModel.statusMessage));
     }
   }
+  ///*** Top Rated ***///
 
   @override
   Future<Either<ServerFailure, List<Movie>>> getTopRatedMovie() async {
@@ -48,6 +51,7 @@ class MovieRepository extends BaseMovieRepository {
       return Left(ServerFailure(failure.errorMessageModel.statusMessage));
     }
   }
+  ///*** TV Trending ***///
 
   @override
   Future<Either<ServerFailure, List<TvMovie>>> getTvTrendingMovie() async {
@@ -59,6 +63,7 @@ class MovieRepository extends BaseMovieRepository {
       return Left(ServerFailure(failure.errorMessageModel.statusMessage));
     }
   }
+  ///*** Person Trending ***///
 
   @override
   Future<Either<ServerFailure, List<PersonMovies>>>
@@ -73,13 +78,18 @@ class MovieRepository extends BaseMovieRepository {
     }
   }
 
-  ///*** Recommendations ***///
+  ///*** Details ***///
 
   @override
   Future<Either<ServerFailure, MovieDetails>> getMovieDetails(
-      MovieDetailsPrams parameters) {
+      MovieDetailsPrams parameters) async {
     // TODO: implement getMovieDetails
-    throw UnimplementedError();
+    final dataRes = await baseRemoteMovieDataSource.getMovieDetails(parameters);
+    try {
+      return Right(dataRes);
+    } on ServerException catch (failure) {
+      return left(ServerFailure(failure.errorMessageModel.statusMessage));
+    }
   }
 
   ///*** Recommendations ***///

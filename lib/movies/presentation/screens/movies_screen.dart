@@ -1,4 +1,5 @@
 import 'package:movie_db_bloc/core/exports/exports_files.dart';
+import 'package:movie_db_bloc/core/utiles/app_string.dart';
 import 'package:movie_db_bloc/movies/presentation/componts/get_person_componts.dart';
 
 import '../controller/movie_controller/movies_events.dart';
@@ -26,22 +27,22 @@ class MainMoviesScreen extends StatelessWidget {
               children: [
                 const GetNowPlayingMovieComponent(),
                 HeadLineMovieTitle(
-                  title: 'Popular',
+                  title: AppString.kPopular,
                   onTap: () {},
                 ),
                 const GetPopularMovieComponent(),
                 HeadLineMovieTitle(
-                  title: 'Top Rated',
+                  title: AppString.kTopRated,
                   onTap: () {},
                 ),
                 const GetTopRatedMovieComponent(),
                 HeadLineMovieTitle(
-                  title: 'Tv Trending',
+                  title: AppString.kTvTrending,
                   onTap: () {},
                 ),
                 const GetTvTrendingMovieComponent(),
                 HeadLineMovieTitle(
-                  title: 'Person Trending',
+                  title:AppString.kPersonTrending,
                   onTap: () {},
                 ),
                 const GetPersonMovieComponent()

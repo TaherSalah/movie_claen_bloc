@@ -4,6 +4,7 @@ import 'package:movie_db_bloc/movies/presentation/screens/movies_screen.dart';
 void main() {
   ServicesLocator().init();
   runApp(const MyApp());
+
 }
 
 class MyApp extends StatelessWidget {

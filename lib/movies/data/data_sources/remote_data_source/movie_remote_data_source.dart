@@ -103,6 +103,7 @@ class MovieRemoteDataSource extends BaseRemoteMovieDataSource {
         await dio.get(ApiConstance.getMovieDetailsPath(parameters.id));
     if (response.statusCode == 200) {
       //TODO:- error    this   revison
+      print(response.data);
       return MovieDetailsModel.fromJson(response.data);
     } else {
       return throw (ServerException(

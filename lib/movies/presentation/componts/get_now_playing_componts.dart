@@ -1,7 +1,7 @@
+import 'dart:developer';
+
 import 'package:movie_db_bloc/core/exports/exports_files.dart';
-
-
-
+import 'package:movie_db_bloc/movies/presentation/screens/movie_details.dart';
 
 class GetNowPlayingMovieComponent extends StatelessWidget {
   const GetNowPlayingMovieComponent({super.key});
@@ -37,7 +37,13 @@ class GetNowPlayingMovieComponent extends StatelessWidget {
                       key: const Key('openMovieMinimalDetail'),
                       onTap: () {
                         // / TODO : NAVIGATE TO MOVIE DETAILS
-
+                        log('iddddd ${item.id}');
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  MovieDetailScreen(id: item.id),
+                            ));
                       },
                       child: Stack(
                         children: [

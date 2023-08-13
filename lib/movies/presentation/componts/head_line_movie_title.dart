@@ -1,4 +1,5 @@
 import 'package:movie_db_bloc/core/exports/exports_files.dart';
+import 'package:movie_db_bloc/core/utiles/app_string.dart';
 
 class HeadLineMovieTitle extends StatelessWidget {
   final String title;
@@ -26,7 +27,7 @@ class HeadLineMovieTitle extends StatelessWidget {
               padding: EdgeInsets.all(8.0),
               child: Row(
                 children: [
-                  Text('See More'),
+                  Text(AppString.kSeeMore),
                   Icon(
                     Icons.arrow_forward_ios,
                     size: 16.0,
