@@ -24,7 +24,7 @@ class MovieModel extends Movie {
         originalLanguage: json['original_language'] ?? '',
         originalTitle: json['original_title'] ?? '',
         overview: json['overview'] ?? '',
-        popularity: json['popularity'],
+        popularity: json['popularity']??0.0,
         posterPath: json['poster_path'] ?? '',
         releaseDate: json['release_date'] ?? '',
         title: json['title'] ?? '',
