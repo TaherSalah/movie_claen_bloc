@@ -4,7 +4,6 @@ import 'package:movie_db_bloc/movies/presentation/screens/movies_screen.dart';
 void main() {
   ServicesLocator().init();
   runApp(const MyApp());
-
 }
 
 class MyApp extends StatelessWidget {
@@ -12,14 +11,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Movies DB',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MainMoviesScreen(),
+    return ScreenUtilInit(
+      designSize: const Size(375, 812),
+
+      builder: (BuildContext context, Widget? child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Movies DB',
+          theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+            useMaterial3: true,
+          ),
+          home: const MainMoviesScreen(),
+        );
+      },
     );
   }
 }

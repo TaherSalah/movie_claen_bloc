@@ -14,6 +14,8 @@ class GetNowPlayingMovieComponent extends StatelessWidget {
           previous.getNowPlayingMoviesState != current.getNowPlayingMoviesState,
       builder: (context, state) {
         print('GetNowPlayingMovieComponent');
+        print('GetNowPlayingMovieComponent ${state.getNowPlayingMovies}');
+
         switch (state.getNowPlayingMoviesState) {
           case RequestStates.loading:
             return const SizedBox(

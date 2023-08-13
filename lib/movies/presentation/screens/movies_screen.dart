@@ -1,11 +1,9 @@
 import 'package:movie_db_bloc/core/exports/exports_files.dart';
 import 'package:movie_db_bloc/core/utiles/app_string.dart';
 import 'package:movie_db_bloc/movies/presentation/componts/get_person_componts.dart';
+import 'package:movie_db_bloc/movies/presentation/componts/see_more_now_playing_movie.dart';
 
 import '../controller/movie_controller/movies_events.dart';
-
-
-
 
 class MainMoviesScreen extends StatelessWidget {
   const MainMoviesScreen({Key? key}) : super(key: key);
@@ -28,7 +26,13 @@ class MainMoviesScreen extends StatelessWidget {
                 const GetNowPlayingMovieComponent(),
                 HeadLineMovieTitle(
                   title: AppString.kPopular,
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const NowPlayingSeeMore(),
+                        ));
+                  },
                 ),
                 const GetPopularMovieComponent(),
                 HeadLineMovieTitle(
@@ -42,7 +46,7 @@ class MainMoviesScreen extends StatelessWidget {
                 ),
                 const GetTvTrendingMovieComponent(),
                 HeadLineMovieTitle(
-                  title:AppString.kPersonTrending,
+                  title: AppString.kPersonTrending,
                   onTap: () {},
                 ),
                 const GetPersonMovieComponent()
