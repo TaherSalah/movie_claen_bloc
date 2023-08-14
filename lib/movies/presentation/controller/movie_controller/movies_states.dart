@@ -6,22 +6,22 @@ class MoviesStates extends Equatable {
   @override
   // TODO: implement props
   List<Object?> get props => [
-        getNowPlayingMoviesState,
-        getNowPlayingMovies,
-        getNowPlayingMessage,
-        getPopularMovies,
-        getPopularMoviesState,
-        popularMessage,
-        getTopRatedMovies,
-        getTopRatedMoviesState,
-        topRatedMessage,
-        getTvTrendingMovies,
-        getTvTrendingMoviesState,
-        tvTrendingMessage,
-        getPersonTrendingMovies,
-        getPersonTrendingMoviesState,
-        personTrendingMessage,
-      ];
+    getNowPlayingMoviesState,
+    getNowPlayingMovies,
+    getNowPlayingMessage,
+    getPopularMovies,
+    getPopularMoviesState,
+    popularMessage,
+    getTopRatedMovies,
+    getTopRatedMoviesState,
+    topRatedMessage,
+    getTvTrendingMovies,
+    getTvTrendingMoviesState,
+    tvTrendingMessage,
+    getPersonTrendingMovies,
+    getPersonTrendingMoviesState,
+    personTrendingMessage,
+  ];
 
 /////*** get Now Playing Movies states  ***/////
   final List<Movie> getNowPlayingMovies;
@@ -71,7 +71,7 @@ class MoviesStates extends Equatable {
     this.personTrendingMessage = '',
   });
   /// TODO: copy with  method
-///*** copy with  for resolve problem  when after create new object from movie state  ***///
+  ///*** copy with  for resolve problem  when after create new object from movie state  ***///
   MoviesStates copyWith({
     List<Movie>? getNowPlayingMovies,
     RequestStates? getNowPlayingMoviesState,

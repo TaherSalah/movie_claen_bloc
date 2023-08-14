@@ -8,12 +8,13 @@ import 'package:movie_db_bloc/movies/presentation/controller/movie_details_contr
 
 /////***  create new instance from get it package  ***/////
 final sl = GetIt.instance;
+
 class ServicesLocator {
   void init() {
     /////***  New object from Movie Bloc  ***/////
     sl.registerFactory(() => MovieBloc(sl(), sl(), sl(), sl()));
     /////***  New object from Movie Details Bloc  ***/////
-    sl.registerFactory(() => MovieDetailsBloc(sl(), sl()));
+    sl.registerFactory(() => MovieDetailsBloc(sl(), sl(), sl()));
     /////***  New object from Base Remote Movie Data Source  ***/////
     sl.registerLazySingleton<BaseRemoteMovieDataSource>(
         () => MovieRemoteDataSource());
@@ -40,5 +41,8 @@ class ServicesLocator {
     /////*** New object  Get Recommendations Movie Use Case  ***/////
     sl.registerLazySingleton<GetRecommendationsMovieUseCase>(
         () => GetRecommendationsMovieUseCase(sl()));
+    /////*** New object  Get Person Details Movie Use Case  ***/////
+    sl.registerLazySingleton<GetPersonMovieUseCase>(
+        () => GetPersonMovieUseCase(sl()));
   }
 }

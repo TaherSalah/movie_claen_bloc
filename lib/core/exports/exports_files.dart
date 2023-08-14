@@ -54,3 +54,5 @@ export 'package:movie_db_bloc/movies/domain/entities/tv_movies.dart';
 export 'package:movie_db_bloc/movies/presentation/componts/get_tv_trending_componts.dart';
 export 'package:movie_db_bloc/movies/domain/use_cases/get_person_movie_use_case.dart';
 export 'package:movie_db_bloc/movies/domain/use_cases/get_tv_trending_movie_use_case.dart';
+export 'package:movie_db_bloc/movies/presentation/controller/movie_details_controller/movie_details_bloc.dart';
+export 'package:movie_db_bloc/movies/domain/entities/genres.dart';

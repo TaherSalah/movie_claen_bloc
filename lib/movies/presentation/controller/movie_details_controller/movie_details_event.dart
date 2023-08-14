@@ -13,3 +13,9 @@ class GetMovieRecommendationEvent extends MovieDetailsEvent {
 
   GetMovieRecommendationEvent(this.id);
 }
+
+class GetMoviePersonDetailsEvent extends MovieDetailsEvent {
+  final int id;
+
+  GetMoviePersonDetailsEvent(this.id);
+}

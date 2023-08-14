@@ -32,7 +32,9 @@ class GetPersonMovieComponent extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   itemCount: state.getPersonTrendingMovies.length,
                   itemBuilder: (context, index) {
+
                     final movie = state.getPersonTrendingMovies[index];
+                    print(movie.id);
                     return Container(
                       padding: const EdgeInsets.only(right: 8.0),
                       child: InkWell(

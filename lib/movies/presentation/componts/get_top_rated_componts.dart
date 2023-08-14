@@ -1,8 +1,5 @@
 import 'package:movie_db_bloc/core/exports/exports_files.dart';
-
-
-
-
+import 'package:movie_db_bloc/movies/presentation/screens/movie_details.dart';
 
 class GetTopRatedMovieComponent extends StatelessWidget {
   const GetTopRatedMovieComponent({super.key});
@@ -39,6 +36,12 @@ class GetTopRatedMovieComponent extends StatelessWidget {
                       child: InkWell(
                         onTap: () {
                           /// TODO : NAVIGATE TO  MOVIE DETAILS
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    MovieDetailScreen(id: movie.id),
+                              ));
                         },
                         child: ClipRRect(
                           borderRadius:

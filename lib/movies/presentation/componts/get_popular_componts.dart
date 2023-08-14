@@ -1,4 +1,5 @@
 import 'package:movie_db_bloc/core/exports/exports_files.dart';
+import 'package:movie_db_bloc/movies/presentation/screens/movie_details.dart';
 
 class GetPopularMovieComponent extends StatelessWidget {
   const GetPopularMovieComponent({super.key});
@@ -26,8 +27,9 @@ class GetPopularMovieComponent extends StatelessWidget {
                 child: ListView.builder(
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
+                  physics: const BouncingScrollPhysics(),
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  itemCount: state.getPopularMovies.length,
+                  itemCount: 6,
                   itemBuilder: (context, index) {
                     final movie = state.getPopularMovies[index];
                     return Container(
@@ -35,6 +37,11 @@ class GetPopularMovieComponent extends StatelessWidget {
                       child: InkWell(
                         onTap: () {
                           /// TODO : NAVIGATE TO  MOVIE DETAILS
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MovieDetailScreen(id: movie.id)
+                              ));
                         },
                         child: ClipRRect(
                           borderRadius:

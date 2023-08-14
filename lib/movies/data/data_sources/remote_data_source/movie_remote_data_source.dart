@@ -7,6 +7,9 @@ import 'package:movie_db_bloc/movies/domain/entities/movie_details.dart';
 import 'package:movie_db_bloc/movies/domain/use_cases/get_movie_details_use_case.dart';
 import 'package:movie_db_bloc/movies/domain/use_cases/get_recommendations_movie_use_case.dart';
 
+import '../../../domain/use_cases/get_person_details_use_case.dart';
+import '../../models/person_details_model.dart';
+
 abstract class BaseRemoteMovieDataSource {
   Future<List<MovieModel>> getNowPlayingMovie();
 
@@ -19,6 +22,8 @@ abstract class BaseRemoteMovieDataSource {
   Future<List<PersonModel>> getPersonTrendingMovie();
 
   Future<MovieDetailsModel> getMovieDetails(MovieDetailsPrams parameters);
+
+  Future<PersonDetailsModel> getPersonDetails(PersonDetailsPrams parameters);
 
   Future<List<RecommendationsModel>> getRecommendationsMovie(
       RecommendationsParameters parameters);
@@ -121,6 +126,20 @@ class MovieRemoteDataSource extends BaseRemoteMovieDataSource {
     if (response.statusCode == 200) {
       return List<RecommendationsModel>.from((response.data['results'] as List)
           .map((e) => RecommendationsModel.fromJson(e)));
+    } else {
+      return throw (ServerException(
+          errorMessageModel: ErrorMessageModel.fromJson(response.data)));
+    }
+  }
+
+  @override
+  Future<PersonDetailsModel> getPersonDetails(
+      PersonDetailsPrams parameters) async {
+    // TODO: implement getPersonDetails
+    final response =
+        await dio.get(ApiConstance.getPersonDetailsPath(parameters.id));
+    if (response.statusCode == 200) {
+      return PersonDetailsModel.fromJson(response.data);
     } else {
       return throw (ServerException(
           errorMessageModel: ErrorMessageModel.fromJson(response.data)));

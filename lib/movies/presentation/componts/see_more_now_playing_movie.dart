@@ -9,16 +9,12 @@ class NowPlayingSeeMore extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-          sl<MovieBloc>()..add(const GetNowPlayingMoviesEvent()),
+      create: (context) => sl<MovieBloc>()..add(const GetPopularMoviesEvent()),
       child: BlocBuilder<MovieBloc, MoviesStates>(
         buildWhen: (previous, current) =>
-            previous.getNowPlayingMoviesState !=
-            current.getNowPlayingMoviesState,
+            previous.getPopularMoviesState != current.getPopularMoviesState,
         builder: (context, state) {
-          print('seeeeeeeeeeeeeeeeeee ${state.getNowPlayingMovies}');
-
-          switch (state.getNowPlayingMoviesState) {
+          switch (state.getPopularMoviesState) {
             case RequestStates.loading:
               return const SizedBox(
                 height: 170,
@@ -26,103 +22,113 @@ class NowPlayingSeeMore extends StatelessWidget {
               );
             case RequestStates.loaded:
               return Scaffold(
-                appBar: AppBar(),
+                  appBar: AppBar(
+                    title: const Text('All Now Popular movies'),
+                  ),
                   body: GridView.builder(
-                padding: const EdgeInsets.symmetric(vertical: 15),
-                itemCount: state.getNowPlayingMovies.length,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisSpacing: 15,
-                    mainAxisSpacing: 15,
-                    crossAxisCount: 2),
-                itemBuilder: (context, index) {
-                  return Card(
-                    child: Stack(
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                    padding: const EdgeInsets.symmetric(vertical: 15),
+                    itemCount: state.getPopularMovies.length,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisSpacing: 15,
+                            mainAxisSpacing: 15,
+                            crossAxisCount: 2),
+                    itemBuilder: (context, index) {
+                      return Card(
+                        child: Stack(
                           children: [
-                            ClipRRect(
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(8.0)),
-                              child: CachedNetworkImage(
-                                  fit: BoxFit.cover,
-                                  imageUrl: ApiConstance.imageUrl(state
-                                      .getNowPlayingMovies[index].backdropPath),
-                                  placeholder: (context, url) => defShimmer(),
-                                  errorWidget: (context, url, error) =>
-                                      // LottieBuilder.asset('assets/images/not_found.json')
-                                      const Icon(Icons.radar)),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(7),
-                              child: Text(
-                                state.getNowPlayingMovies[index].title,
-                                style: TextStyle(fontSize: 10.sp,fontWeight: FontWeight.bold),
-                              ),
-                            ),
-
-                            Spacer(),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                              child: Row(
-                                children: [
-                                  CircularPercentIndicator(
-                                    radius: 14.r,
-                                    lineWidth: 2.5,
-                                    animateFromLastPercent: true,
-                                    animation: true,
-                                    percent: double.parse(
-                                            '${state.getNowPlayingMovies[index].voteAverage}') /
-                                        9,
-                                    // here we're using the percentage to be in sync with the color of the text
-                                    center: Text(
-                                      ("${(state.getNowPlayingMovies[index].voteAverage / 9 * 100).round()}%"),
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 9.0.sp,
-                                          color: Colors.black),
-                                    ),
-                                    circularStrokeCap: CircularStrokeCap.round,
-                                    progressColor: Colors.green[700],
-                                  ),
-                                  SizedBox(
-                                    width: 5.w,
-                                  ),
-                                  Text(
-                                    'User\nscore',
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                ClipRRect(
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(8.0)),
+                                  child: CachedNetworkImage(
+                                      fit: BoxFit.cover,
+                                      imageUrl: ApiConstance.imageUrl(state
+                                          .getPopularMovies[index]
+                                          .backdropPath),
+                                      placeholder: (context, url) =>
+                                          defShimmer(),
+                                      errorWidget: (context, url, error) =>
+                                          // LottieBuilder.asset('assets/images/not_found.json')
+                                          const Icon(Icons.radar)),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(10),
+                                  child: Text(
+                                    state.getPopularMovies[index].title,
                                     style: TextStyle(
-                                        fontSize: 8.sp,
+                                        fontSize: 10.sp,
                                         fontWeight: FontWeight.bold),
                                   ),
-                                  const Spacer(),
-                                  Container(
-                                    padding: const EdgeInsets.symmetric(
-                                      vertical: 2.0,
-                                      horizontal: 8.0,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color: Colors.greenAccent,
-                                      borderRadius: BorderRadius.circular(4.0),
-                                    ),
-                                    child: Text(
-                                      state.getNowPlayingMovies[index].releaseDate.split('-')[0],
-                                      style: const TextStyle(
-                                        fontSize: 9.0,
-                                        fontWeight: FontWeight.w500,
+                                ),
+                                const Spacer(),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 8.0),
+                                  child: Row(
+                                    children: [
+                                      CircularPercentIndicator(
+                                        radius: 14.r,
+                                        lineWidth: 2.5,
+                                        animateFromLastPercent: true,
+                                        animation: true,
+                                        percent: double.parse(
+                                                '${state.getPopularMovies[index].voteAverage}') /
+                                            9,
+                                        // here we're using the percentage to be in sync with the color of the text
+                                        center: Text(
+                                          ("${(state.getPopularMovies[index].voteAverage / 9 * 100).round()}%"),
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 9.0.sp,
+                                              color: Colors.black),
+                                        ),
+                                        circularStrokeCap:
+                                            CircularStrokeCap.round,
+                                        progressColor: Colors.green[700],
                                       ),
-                                    ),
+                                      SizedBox(
+                                        width: 5.w,
+                                      ),
+                                      Text(
+                                        'User\nscore',
+                                        style: TextStyle(
+                                            fontSize: 8.sp,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      const Spacer(),
+                                      Container(
+                                        padding: const EdgeInsets.symmetric(
+                                          vertical: 2.0,
+                                          horizontal: 8.0,
+                                        ),
+                                        decoration: BoxDecoration(
+                                          color: Colors.greenAccent,
+                                          borderRadius:
+                                              BorderRadius.circular(4.0),
+                                        ),
+                                        child: Text(
+                                          state.getPopularMovies[index]
+                                              .releaseDate
+                                              .split('-')[0],
+                                          style: const TextStyle(
+                                            fontSize: 9.0,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
                                   ),
-
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
                           ],
                         ),
-                      ],
-                    ),
-                  );
-                },
-              ));
+                      );
+                    },
+                  ));
             case RequestStates.error:
               return const Text('eeeeeeeeeeeeeeeeeeeeeeeerrror');
           }

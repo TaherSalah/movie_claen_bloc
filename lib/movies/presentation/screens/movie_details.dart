@@ -1,16 +1,5 @@
-import 'package:animate_do/animate_do.dart';
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:http/http.dart';
 import 'package:movie_db_bloc/core/exports/exports_files.dart';
-import 'package:movie_db_bloc/core/services/services_locator.dart';
-import 'package:movie_db_bloc/movies/presentation/controller/movie_details_controller/movie_details_bloc.dart';
-import 'package:shimmer/shimmer.dart';
-
-import '../../../core/network/api_constanc.dart';
-import '../../domain/entities/genres.dart';
+import 'package:movie_db_bloc/movies/presentation/componts/movie_details_component.dart';
 
 class MovieDetailScreen extends StatelessWidget {
   final int id;
@@ -23,8 +12,12 @@ class MovieDetailScreen extends StatelessWidget {
       create: (context) => sl<MovieDetailsBloc>()
         ..add(GetMovieDetailsEvent(id))
         ..add(GetMovieRecommendationEvent(id)),
-      child: const Scaffold(
-        body: MovieDetailContent(),
+      child: Scaffold(
+        body: BlocBuilder<MovieDetailsBloc, MovieDetailsState>(
+          builder: (context, state) {
+            return const MovieDetailContent();
+          },
+        ),
       ),
     );
   }

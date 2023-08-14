@@ -11,6 +11,8 @@ class ApiConstance {
       '$baseUrl/trending/person/week?$apiKey';
   static  String getMovieDetailsPath (int movieId) =>
       '$baseUrl/movie/$movieId?$apiKey';
+  static  String getPersonDetailsPath (int personId) =>
+      '$baseUrl/person/$personId?$apiKey';
   static  String getMovieRecommendationsPath (int movieId) =>
       '$baseUrl/movie/$movieId/recommendations?$apiKey';
   static const String imagePath = 'https://image.tmdb.org/t/p/w500';

@@ -1,5 +1,7 @@
 import 'package:movie_db_bloc/core/exports/exports_files.dart';
 
+import '../screens/movie_details.dart';
+
 
 
 class GetTvTrendingMovieComponent extends StatelessWidget {
@@ -35,6 +37,13 @@ class GetTvTrendingMovieComponent extends StatelessWidget {
                   return InkWell(
                     onTap: () {
                       /// TODO : NAVIGATE TO  MOVIE DETAILS
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                MovieDetailScreen(id: movie.id),
+                          ));
+
                     },
                     child: ClipRRect(
                       borderRadius:

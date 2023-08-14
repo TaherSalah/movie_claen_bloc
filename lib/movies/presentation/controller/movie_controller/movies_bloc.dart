@@ -25,20 +25,20 @@ class MovieBloc extends Bloc<MoviesEvents, MoviesStates> {
   FutureOr<void> _getNowPlayingMoviesEvent(
       event, Emitter<MoviesStates> emit) async {
     final res =
-        await GetNowPlayingMovieUseCase(sl()).call(const NoParameters());
+    await GetNowPlayingMovieUseCase(sl()).call(const NoParameters());
     /////*** for change the state error and success ***////
     res.fold(
-        (failure) => {
-              emit(state.copyWith(
-                  getNowPlayingMoviesState: RequestStates.error,
-                  getNowPlayingMessage: failure.message))
-            },
-        (success) => {
-              emit(state.copyWith(
-                getNowPlayingMovies: success,
-                getNowPlayingMoviesState: RequestStates.loaded,
-              ))
-            });
+            (failure) => {
+          emit(state.copyWith(
+              getNowPlayingMoviesState: RequestStates.error,
+              getNowPlayingMessage: failure.message))
+        },
+            (success) => {
+          emit(state.copyWith(
+            getNowPlayingMovies: success,
+            getNowPlayingMoviesState: RequestStates.loaded,
+          ))
+        });
   }
 
   ///*** getPopularMoviesEvent method ***///
@@ -47,17 +47,17 @@ class MovieBloc extends Bloc<MoviesEvents, MoviesStates> {
       GetPopularMoviesEvent event, Emitter<MoviesStates> emit) async {
     final res = await GetPopularMovieUseCase(sl()).call(const NoParameters());
     res.fold(
-        (failure) => {
-              /////// copy with take new states //////
-              emit(state.copyWith(
-                  getPopularMoviesState: RequestStates.error,
-                  popularMessage: failure.message))
-            },
-        (success) => {
-              emit(state.copyWith(
-                  getPopularMovies: success,
-                  getPopularMoviesState: RequestStates.loaded))
-            });
+            (failure) => {
+          /////// copy with take new states //////
+          emit(state.copyWith(
+              getPopularMoviesState: RequestStates.error,
+              popularMessage: failure.message))
+        },
+            (success) => {
+          emit(state.copyWith(
+              getPopularMovies: success,
+              getPopularMoviesState: RequestStates.loaded))
+        });
   }
 
   ///*** getTopRatedMoviesEvent method ***///
@@ -65,17 +65,17 @@ class MovieBloc extends Bloc<MoviesEvents, MoviesStates> {
       GetTopRatedMoviesEvent event, Emitter<MoviesStates> emit) async {
     final res = await GetTopRatedMovieUseCase(sl()).call(const NoParameters());
     res.fold(
-        (failure) => {
-              /////// copy with take new states //////
-              emit(state.copyWith(
-                  getTopRatedMoviesState: RequestStates.error,
-                  topRatedMessage: failure.message))
-            },
-        (success) => {
-              emit(state.copyWith(
-                  getTopRatedMovies: success,
-                  getTopRatedMoviesState: RequestStates.loaded))
-            });
+            (failure) => {
+          /////// copy with take new states //////
+          emit(state.copyWith(
+              getTopRatedMoviesState: RequestStates.error,
+              topRatedMessage: failure.message))
+        },
+            (success) => {
+          emit(state.copyWith(
+              getTopRatedMovies: success,
+              getTopRatedMoviesState: RequestStates.loaded))
+        });
   }
 
   ///*** getTvTrendingMoviesEvent method ***///
@@ -83,19 +83,19 @@ class MovieBloc extends Bloc<MoviesEvents, MoviesStates> {
   FutureOr<void> _getTvTrendingMoviesEvent(
       GetTvTrendingMoviesEvent event, Emitter<MoviesStates> emit) async {
     final res =
-        await GetTvTrendingMovieUseCase(sl()).call(const NoParameters());
+    await GetTvTrendingMovieUseCase(sl()).call(const NoParameters());
     res.fold(
-        (failure) => {
-              /////// copy with take new states //////
-              emit(state.copyWith(
-                  getTvTrendingMoviesState: RequestStates.error,
-                  tvTrendingMessage: failure.message))
-            },
-        (success) => {
-              emit(state.copyWith(
-                  getTvTrendingMovies: success,
-                  getTvTrendingMoviesState: RequestStates.loaded))
-            });
+            (failure) => {
+          /////// copy with take new states //////
+          emit(state.copyWith(
+              getTvTrendingMoviesState: RequestStates.error,
+              tvTrendingMessage: failure.message))
+        },
+            (success) => {
+          emit(state.copyWith(
+              getTvTrendingMovies: success,
+              getTvTrendingMoviesState: RequestStates.loaded))
+        });
   }
 
   ///*** getPersonTrendingMoviesEvent method ***///
@@ -103,15 +103,15 @@ class MovieBloc extends Bloc<MoviesEvents, MoviesStates> {
       GetPersonTrendingMoviesEvent event, Emitter<MoviesStates> emit) async {
     final res = await GetPersonMovieUseCase(sl()).call(const NoParameters());
     res.fold(
-        (failure) => {
-              emit(state.copyWith(
-                  getPersonTrendingMoviesState: RequestStates.error,
-                  personTrendingMessage: failure.message)),
-            },
-        (success) => {
-              emit(state.copyWith(
-                  getPersonTrendingMovies: success,
-                  getPersonTrendingMoviesState: RequestStates.loaded))
-            });
+            (failure) => {
+          emit(state.copyWith(
+              getPersonTrendingMoviesState: RequestStates.error,
+              personTrendingMessage: failure.message)),
+        },
+            (success) => {
+          emit(state.copyWith(
+              getPersonTrendingMovies: success,
+              getPersonTrendingMoviesState: RequestStates.loaded))
+        });
   }
 }
