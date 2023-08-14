@@ -1,6 +1,6 @@
 import 'package:lottie/lottie.dart';
 import 'package:movie_db_bloc/core/exports/exports_files.dart';
-
+import 'package:movie_db_bloc/movies/presentation/screens/person_details_screen.dart';
 
 class GetPersonMovieComponent extends StatelessWidget {
   const GetPersonMovieComponent({super.key});
@@ -32,7 +32,6 @@ class GetPersonMovieComponent extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   itemCount: state.getPersonTrendingMovies.length,
                   itemBuilder: (context, index) {
-
                     final movie = state.getPersonTrendingMovies[index];
                     print(movie.id);
                     return Container(
@@ -40,6 +39,12 @@ class GetPersonMovieComponent extends StatelessWidget {
                       child: InkWell(
                         onTap: () {
                           /// TODO : NAVIGATE TO  MOVIE DETAILS
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => PersonDetailsScreen(
+                                    state.getPersonTrendingMovies[index].id),
+                              ));
                         },
                         child: ClipRRect(
                             borderRadius:
@@ -61,12 +66,11 @@ class GetPersonMovieComponent extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              errorWidget: (context, url, error) =>
-                                  Center(
-                                    child: Lottie.asset("assets/images/not_found.json"),
-                                  ),
-                            )
-                        ),
+                              errorWidget: (context, url, error) => Center(
+                                child: Lottie.asset(
+                                    "assets/images/not_found.json"),
+                              ),
+                            )),
                       ),
                     );
                   },

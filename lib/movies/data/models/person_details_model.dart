@@ -1,3 +1,4 @@
+import 'package:movie_db_bloc/core/exports/exports_files.dart';
 import 'package:movie_db_bloc/movies/domain/entities/person_details.dart';
 
 class PersonDetailsModel extends PersonDetails {
@@ -17,15 +18,15 @@ class PersonDetailsModel extends PersonDetails {
   factory PersonDetailsModel.fromJson(Map<String, dynamic> json) {
     return PersonDetailsModel(
         alsoKnownAs: json['also_known_as'].cast<String>(),
-        biography: json['biography'],
-        birthday: json['birthday'],
-        gender: json['gender'],
-        id: json['id'],
-        imdbId: json['imdb_id'],
-        knownForDepartment: json['known_for_department'],
-        name: json['name'],
-        placeOfBirth: json['place_of_birth'],
-        popularity: json['popularity'],
-        profilePath: json['profile_path']);
+        biography: json['biography']??'',
+        birthday: json['birthday']??'',
+        gender: json['gender']??0,
+        id: json['id']??529,
+        imdbId: json['imdb_id']??"",
+        knownForDepartment: json['known_for_department']??'',
+        name: json['name']??'',
+        placeOfBirth: json['place_of_birth']??'',
+        popularity: json['popularity']??0.0,
+        profilePath: json['profile_path']??AppConstance.errorNetWorkImage);
   }
 }

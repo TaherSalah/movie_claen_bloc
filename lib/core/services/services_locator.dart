@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:movie_db_bloc/core/exports/exports_files.dart';
 import 'package:movie_db_bloc/movies/domain/use_cases/get_movie_details_use_case.dart';
+import 'package:movie_db_bloc/movies/domain/use_cases/get_person_details_use_case.dart';
 import 'package:movie_db_bloc/movies/domain/use_cases/get_person_movie_use_case.dart';
 import 'package:movie_db_bloc/movies/domain/use_cases/get_recommendations_movie_use_case.dart';
 import 'package:movie_db_bloc/movies/domain/use_cases/get_tv_trending_movie_use_case.dart';
@@ -42,7 +43,7 @@ class ServicesLocator {
     sl.registerLazySingleton<GetRecommendationsMovieUseCase>(
         () => GetRecommendationsMovieUseCase(sl()));
     /////*** New object  Get Person Details Movie Use Case  ***/////
-    sl.registerLazySingleton<GetPersonMovieUseCase>(
-        () => GetPersonMovieUseCase(sl()));
+    sl.registerLazySingleton<GetPersonDetailsUseCase>(
+        () => GetPersonDetailsUseCase(sl()));
   }
 }

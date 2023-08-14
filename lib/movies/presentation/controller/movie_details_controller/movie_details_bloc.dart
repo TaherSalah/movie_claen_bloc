@@ -17,8 +17,10 @@ class MovieDetailsBloc extends Bloc<MovieDetailsEvent, MovieDetailsState> {
   GetRecommendationsMovieUseCase getRecommendationsMovieUseCase;
   GetPersonDetailsUseCase getPersonDetailsUseCaseMovieUseCase;
 
-  MovieDetailsBloc(this.getMovieDetailsUseCase,
-      this.getRecommendationsMovieUseCase, this.getPersonDetailsUseCaseMovieUseCase)
+  MovieDetailsBloc(
+      this.getMovieDetailsUseCase,
+      this.getRecommendationsMovieUseCase,
+      this.getPersonDetailsUseCaseMovieUseCase)
       : super(MovieDetailsState()) {
     on<GetMovieDetailsEvent>(_getMovieDetails);
     on<GetMovieRecommendationEvent>(_getRecommendationMovie);
@@ -54,8 +56,15 @@ class MovieDetailsBloc extends Bloc<MovieDetailsEvent, MovieDetailsState> {
   }
 
   FutureOr<void> _getPersonDetailsMovie(
-      GetMoviePersonDetailsEvent event, Emitter<MovieDetailsState> emit) {
-    final res = getPersonDetailsUseCaseMovieUseCase.call(PersonDetailsPrams(id: event.id));
-
+      GetMoviePersonDetailsEvent event, Emitter<MovieDetailsState> emit) async {
+    final res = await getPersonDetailsUseCaseMovieUseCase
+        .call(PersonDetailsPrams(id: event.id));
+    res.fold(
+        (failure) => emit(state.copyWith(
+              moviePersonState: RequestStates.error,
+              moviePersonMessage: failure.message,
+            )),
+        (success) => emit(state.copyWith(
+            moviePerson: success, moviePersonState: RequestStates.loaded)));
   }
 }
