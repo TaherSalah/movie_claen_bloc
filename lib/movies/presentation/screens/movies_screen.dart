@@ -7,8 +7,8 @@ import 'package:shimmer/main.dart';
 
 import '../controller/movie_controller/movies_events.dart';
 
-class MainMoviesScreen extends StatelessWidget {
-  const MainMoviesScreen({Key? key}) : super(key: key);
+class MoviesScreen extends StatelessWidget {
+  const MoviesScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

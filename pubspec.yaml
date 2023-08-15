@@ -39,6 +39,7 @@ dependencies:
   transparent_image:
   lottie: ^2.5.0
   percent_indicator: ^4.2.3
+  firebase_auth: ^4.7.2
 dev_dependencies:
   flutter_test:
     sdk: flutter

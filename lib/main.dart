@@ -1,5 +1,8 @@
 import 'package:movie_db_bloc/core/exports/exports_files.dart';
 import 'package:movie_db_bloc/movies/presentation/screens/movies_screen.dart';
+import 'package:movie_db_bloc/movies/presentation/screens/splash_screen.dart';
+
+import 'auth/Screens/Welcome/welcome_screen.dart';
 
 void main() {
   ServicesLocator().init();
@@ -19,10 +22,9 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Movies DB',
           theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-          home: const MainMoviesScreen(),
+          home: const WelcomeScreen(),
         );
       },
     );
