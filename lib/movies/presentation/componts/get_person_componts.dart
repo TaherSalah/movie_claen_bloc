@@ -25,7 +25,7 @@ class GetPersonMovieComponent extends StatelessWidget {
             return FadeIn(
               duration: const Duration(milliseconds: 500),
               child: SizedBox(
-                height: 120,
+                height: 250.h,
                 child: ListView.builder(
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,

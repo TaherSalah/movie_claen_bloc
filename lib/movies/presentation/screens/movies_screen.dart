@@ -1,7 +1,9 @@
 import 'package:movie_db_bloc/core/exports/exports_files.dart';
 import 'package:movie_db_bloc/core/utiles/app_string.dart';
+import 'package:movie_db_bloc/movies/presentation/componts/custom_widget/custom_head_line_movie_title.dart';
 import 'package:movie_db_bloc/movies/presentation/componts/get_person_componts.dart';
 import 'package:movie_db_bloc/movies/presentation/componts/see_more_now_playing_movie.dart';
+import 'package:shimmer/main.dart';
 
 import '../controller/movie_controller/movies_events.dart';
 
@@ -37,7 +39,14 @@ class MainMoviesScreen extends StatelessWidget {
                 const GetPopularMovieComponent(),
                 HeadLineMovieTitle(
                   title: AppString.kTopRated,
-                  onTap: () {},
+                  onTap: () {
+                    // Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //       builder: (context) =>
+                    //           MovieDetailScreen(id: movie.id),
+                    //     ));
+                  },
                 ),
                 const GetTopRatedMovieComponent(),
                 HeadLineMovieTitle(
@@ -47,7 +56,8 @@ class MainMoviesScreen extends StatelessWidget {
                 const GetTvTrendingMovieComponent(),
                 HeadLineMovieTitle(
                   title: AppString.kPersonTrending,
-                  onTap: () {},
+                  onTap: () {
+                  },
                 ),
                 const GetPersonMovieComponent()
               ],

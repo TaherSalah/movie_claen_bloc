@@ -12,7 +12,6 @@ export 'package:flutter_screenutil/flutter_screenutil.dart';
 export 'package:movie_db_bloc/core/Theme/theme.dart';
 export 'package:flutter_svg/svg.dart';
 
-export 'package:pin_code_fields/pin_code_fields.dart';
 
 export 'dart:io';
 
@@ -47,8 +46,6 @@ export 'package:movie_db_bloc/movies/domain/use_cases/get_top_rated_movie_use_ca
 export 'package:movie_db_bloc/movies/presentation/componts/get_now_playing_componts.dart';
 export 'package:movie_db_bloc/movies/presentation/componts/get_popular_componts.dart';
 export 'package:movie_db_bloc/movies/presentation/componts/get_top_rated_componts.dart';
-export 'package:movie_db_bloc/movies/presentation/componts/head_line_movie_title.dart';
-export 'package:movie_db_bloc/movies/presentation/componts/loading_screen.dart';
 export 'package:movie_db_bloc/movies/domain/entities/person_movies.dart';
 export 'package:movie_db_bloc/movies/domain/entities/tv_movies.dart';
 export 'package:movie_db_bloc/movies/presentation/componts/get_tv_trending_componts.dart';

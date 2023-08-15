@@ -81,31 +81,38 @@ class GetNowPlayingMovieComponent extends StatelessWidget {
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.only(bottom: 16.0),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      const Icon(
-                                        Icons.circle,
-                                        color: Colors.redAccent,
-                                        size: 16.0,
-                                      ),
-                                      const SizedBox(width: 4.0),
-                                      Text(
-                                        'Now Playing'.toUpperCase(),
-                                        style: const TextStyle(
-                                          fontSize: 16.0,
+                                  child: Container(
+                                    width: double.infinity,
+                                    padding: EdgeInsets.all(25),
+                                    color: Colors.black.withOpacity(0.4),
+                                    child: Column(
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            const Icon(Icons.online_prediction,
+                                                color: Colors.green),
+                                            SizedBox(
+                                              width: 10.w,
+                                            ),
+                                            Text(
+                                              'Now Playing'.toUpperCase(),
+                                              style: TextStyle(
+                                                  fontSize: 16.sp,
+                                                  color: Colors.white),
+                                            ),
+                                          ],
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(bottom: 16.0),
-                                  child: Text(
-                                    item.title,
-                                    textAlign: TextAlign.center,
-                                    style: const TextStyle(
-                                      fontSize: 24,
+                                        SizedBox(height: 5.h,),
+                                        Text(
+                                          item.title,
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              fontSize: 20.sp,
+                                              color: Colors.white),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ),
