@@ -1,5 +1,6 @@
-import 'package:movie_db_bloc/core/exports/exports_files.dart';
-import 'package:movie_db_bloc/core/utiles/app_string.dart';
+
+import 'package:movie_db/core/exports/exports_files.dart';
+import 'package:movie_db/core/utiles/app_string.dart';
 
 class HeadLineMovieTitle extends StatelessWidget {
   final String title;

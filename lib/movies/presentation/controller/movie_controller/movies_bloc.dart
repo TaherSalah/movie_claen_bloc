@@ -1,7 +1,16 @@
 import 'dart:async';
 
-import 'package:movie_db_bloc/core/exports/exports_files.dart';
-import 'package:movie_db_bloc/core/use_cases/base_use_case.dart';
+
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_db/core/services/services_locator.dart';
+import 'package:movie_db/core/use_cases/base_use_case.dart';
+import 'package:movie_db/core/utiles/enums.dart';
+import 'package:movie_db/movies/domain/use_cases/get_now_playing_movie_use_case.dart';
+import 'package:movie_db/movies/domain/use_cases/get_person_movie_use_case.dart';
+import 'package:movie_db/movies/domain/use_cases/get_popular_movie_use_case.dart';
+import 'package:movie_db/movies/domain/use_cases/get_top_rated_movie_use_case.dart';
+import 'package:movie_db/movies/domain/use_cases/get_tv_trending_movie_use_case.dart';
+import 'package:movie_db/movies/presentation/controller/movie_controller/movies_states.dart';
 
 import 'movies_events.dart';
 

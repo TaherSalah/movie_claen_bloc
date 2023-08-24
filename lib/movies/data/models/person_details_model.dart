@@ -1,5 +1,7 @@
-import 'package:movie_db_bloc/core/exports/exports_files.dart';
-import 'package:movie_db_bloc/movies/domain/entities/person_details.dart';
+
+
+import 'package:movie_db/core/utiles/app_constanc.dart';
+import 'package:movie_db/movies/domain/entities/person_details.dart';
 
 class PersonDetailsModel extends PersonDetails {
   const PersonDetailsModel(

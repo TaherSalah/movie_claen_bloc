@@ -1,6 +1,9 @@
-import 'package:movie_db_bloc/core/exports/exports_files.dart';
-import 'package:movie_db_bloc/movies/presentation/componts/custom_widget/custom_text_default_widget.dart';
 
+import 'package:movie_db/core/Theme/theme.dart';
+import 'package:movie_db/core/exports/exports_files.dart';
+import 'package:movie_db/movies/presentation/componts/custom_widget/custom_text_default_widget.dart';
+
+// ignore: must_be_immutable
 class CustomExpansionTile extends StatefulWidget {
 
   final String title;

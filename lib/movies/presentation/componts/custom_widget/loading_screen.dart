@@ -1,6 +1,8 @@
-import 'package:movie_db_bloc/core/exports/exports_files.dart';
 
 
+
+import 'package:flutter/material.dart';
+import 'package:movie_db/core/Theme/theme.dart';
 
 class LoadingScreen extends StatelessWidget {
   final Widget child;

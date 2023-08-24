@@ -1,4 +1,5 @@
-import 'package:movie_db_bloc/movies/domain/entities/person_movies.dart';
+
+import 'package:movie_db/movies/domain/entities/person_movies.dart';
 
 import 'known_for_person_model.dart';
 

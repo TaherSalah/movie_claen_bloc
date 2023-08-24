@@ -1,12 +1,14 @@
 import 'dart:async';
+import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_db_bloc/core/exports/exports_files.dart';
-import 'package:movie_db_bloc/movies/domain/entities/movie_details.dart';
-import 'package:movie_db_bloc/movies/domain/entities/person_details.dart';
-import 'package:movie_db_bloc/movies/domain/entities/recommendations.dart';
-import 'package:movie_db_bloc/movies/domain/use_cases/get_movie_details_use_case.dart';
-import 'package:movie_db_bloc/movies/domain/use_cases/get_person_details_use_case.dart';
-import 'package:movie_db_bloc/movies/domain/use_cases/get_recommendations_movie_use_case.dart';
+import 'package:movie_db/core/utiles/enums.dart';
+import 'package:movie_db/movies/domain/entities/movie_details.dart';
+import 'package:movie_db/movies/domain/entities/person_details.dart';
+import 'package:movie_db/movies/domain/entities/recommendations.dart';
+import 'package:movie_db/movies/domain/use_cases/get_movie_details_use_case.dart';
+import 'package:movie_db/movies/domain/use_cases/get_person_details_use_case.dart';
+import 'package:movie_db/movies/domain/use_cases/get_recommendations_movie_use_case.dart';
+
 
 part 'movie_details_event.dart';
 

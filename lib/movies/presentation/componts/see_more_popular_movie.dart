@@ -1,6 +1,12 @@
-import 'package:lottie/lottie.dart';
-import 'package:movie_db_bloc/core/exports/exports_files.dart';
-import 'package:movie_db_bloc/movies/presentation/controller/movie_controller/movies_events.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_db/core/exports/exports_files.dart';
+import 'package:movie_db/core/network/api_constanc.dart';
+import 'package:movie_db/core/services/services_locator.dart';
+import 'package:movie_db/core/utiles/enums.dart';
+import 'package:movie_db/movies/presentation/componts/get_tv_trending_componts.dart';
+import 'package:movie_db/movies/presentation/controller/movie_controller/movies_bloc.dart';
+import 'package:movie_db/movies/presentation/controller/movie_controller/movies_events.dart';
+import 'package:movie_db/movies/presentation/controller/movie_controller/movies_states.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class NowPlayingSeeMore extends StatelessWidget {

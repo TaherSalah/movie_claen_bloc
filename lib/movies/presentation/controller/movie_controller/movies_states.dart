@@ -1,6 +1,11 @@
-import 'package:movie_db_bloc/core/exports/exports_files.dart';
 
 
+
+import 'package:equatable/equatable.dart';
+import 'package:movie_db/core/utiles/enums.dart';
+import 'package:movie_db/movies/domain/entities/movie.dart';
+import 'package:movie_db/movies/domain/entities/person_movies.dart';
+import 'package:movie_db/movies/domain/entities/tv_movies.dart';
 
 class MoviesStates extends Equatable {
   @override

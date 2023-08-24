@@ -1,6 +1,7 @@
-import 'package:movie_db_bloc/movies/data/models/genres_model.dart';
-import 'package:movie_db_bloc/movies/domain/entities/genres.dart';
-import 'package:movie_db_bloc/movies/domain/entities/movie_details.dart';
+
+
+import 'package:movie_db/movies/data/models/genres_model.dart';
+import 'package:movie_db/movies/domain/entities/movie_details.dart';
 
 class MovieDetailsModel extends MovieDetails {
   const MovieDetailsModel(

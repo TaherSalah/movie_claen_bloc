@@ -1,11 +1,16 @@
-import 'package:movie_db_bloc/core/exports/exports_files.dart';
-import 'package:movie_db_bloc/movies/data/models/movie_details_model.dart';
-import 'package:movie_db_bloc/movies/data/models/person_movie_model.dart';
-import 'package:movie_db_bloc/movies/data/models/recommendations_model.dart';
-import 'package:movie_db_bloc/movies/data/models/tv_movie_model.dart';
-import 'package:movie_db_bloc/movies/domain/entities/movie_details.dart';
-import 'package:movie_db_bloc/movies/domain/use_cases/get_movie_details_use_case.dart';
-import 'package:movie_db_bloc/movies/domain/use_cases/get_recommendations_movie_use_case.dart';
+
+
+import 'package:movie_db/core/error/exceptions.dart';
+import 'package:movie_db/core/exports/exports_files.dart';
+import 'package:movie_db/core/network/api_constanc.dart';
+import 'package:movie_db/core/network/error_message_model.dart';
+import 'package:movie_db/movies/data/models/movie_details_model.dart';
+import 'package:movie_db/movies/data/models/movie_model.dart';
+import 'package:movie_db/movies/data/models/person_movie_model.dart';
+import 'package:movie_db/movies/data/models/recommendations_model.dart';
+import 'package:movie_db/movies/data/models/tv_movie_model.dart';
+import 'package:movie_db/movies/domain/use_cases/get_movie_details_use_case.dart';
+import 'package:movie_db/movies/domain/use_cases/get_recommendations_movie_use_case.dart';
 
 import '../../../domain/use_cases/get_person_details_use_case.dart';
 import '../../models/person_details_model.dart';
@@ -108,8 +113,6 @@ class MovieRemoteDataSource extends BaseRemoteMovieDataSource {
     final response =
         await dio.get(ApiConstance.getMovieDetailsPath(parameters.id));
     if (response.statusCode == 200) {
-      //TODO:- error    this   revison
-      print(response.data);
       return MovieDetailsModel.fromJson(response.data);
     } else {
       return throw (ServerException(

@@ -1,4 +1,5 @@
-import 'package:movie_db_bloc/movies/domain/entities/known_for_person.dart';
+
+import 'package:movie_db/movies/domain/entities/known_for_person.dart';
 
 class KnownForPersonModel extends KnownForPerson {
   const KnownForPersonModel(

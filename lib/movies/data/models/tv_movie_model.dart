@@ -1,4 +1,5 @@
-import 'package:movie_db_bloc/movies/domain/entities/tv_movies.dart';
+
+import 'package:movie_db/movies/domain/entities/tv_movies.dart';
 
 class TvMovieModel extends TvMovie {
   const TvMovieModel(

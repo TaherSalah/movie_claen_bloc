@@ -1,6 +1,6 @@
-# movie_db_bloc
+# movie_db
 
-A new Flutter project.
+this app created with clean arch bloc
 
 ## Getting Started
 

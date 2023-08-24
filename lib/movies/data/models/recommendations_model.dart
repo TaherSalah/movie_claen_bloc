@@ -1,4 +1,5 @@
-import 'package:movie_db_bloc/movies/domain/entities/recommendations.dart';
+
+import 'package:movie_db/movies/domain/entities/recommendations.dart';
 
 class RecommendationsModel extends Recommendations {
   const RecommendationsModel({required super.backdropPath, required super.id});

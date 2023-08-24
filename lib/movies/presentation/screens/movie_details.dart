@@ -1,5 +1,11 @@
-import 'package:movie_db_bloc/core/exports/exports_files.dart';
-import 'package:movie_db_bloc/movies/presentation/componts/movie_details_component.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lottie/lottie.dart';
+import 'package:movie_db/core/exports/exports_files.dart';
+import 'package:movie_db/core/network/api_constanc.dart';
+import 'package:movie_db/core/services/services_locator.dart';
+import 'package:movie_db/core/utiles/enums.dart';
+import 'package:movie_db/movies/domain/entities/genres.dart';
+import 'package:movie_db/movies/presentation/controller/movie_details_controller/movie_details_bloc.dart';
 
 class MovieDetailScreen extends StatelessWidget {
   final int id;
@@ -13,6 +19,7 @@ class MovieDetailScreen extends StatelessWidget {
         ..add(GetMovieDetailsEvent(id))
         ..add(GetMovieRecommendationEvent(id)),
       child: Scaffold(
+
         body: BlocBuilder<MovieDetailsBloc, MovieDetailsState>(
           builder: (context, state) {
             return const MovieDetailContent();
@@ -41,6 +48,8 @@ class MovieDetailContent extends StatelessWidget {
                   pinned: true,
                   expandedHeight: 250.0,
                   flexibleSpace: FlexibleSpaceBar(
+                    title: const Text('All Now Playing Movies',style: TextStyle(color: Colors.black),),
+
                     background: FadeIn(
                       duration: const Duration(milliseconds: 500),
                       child: ShaderMask(
@@ -199,8 +208,9 @@ class MovieDetailContent extends StatelessWidget {
               child: CircularProgressIndicator(),
             );
           case RequestStates.error:
-            return Center(child: Text('errrrrrrrrrrror'));
+            return const Center(child: Text('errrrrrrrrrrror'));
         }
+
       },
     );
   }
@@ -257,7 +267,8 @@ class MovieDetailContent extends StatelessWidget {
                       ),
                     ),
                     errorWidget: (context, url, error) =>
-                        const Icon(Icons.error),
+                  Lottie.asset(
+                    "assets/images/not_found.json"),
                     height: 180.0,
                     fit: BoxFit.cover,
                   ),

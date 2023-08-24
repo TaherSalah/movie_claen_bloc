@@ -1,9 +1,18 @@
-import 'package:movie_db_bloc/core/exports/exports_files.dart';
-import 'package:movie_db_bloc/core/utiles/app_string.dart';
-import 'package:movie_db_bloc/movies/presentation/componts/custom_widget/custom_head_line_movie_title.dart';
-import 'package:movie_db_bloc/movies/presentation/componts/get_person_componts.dart';
-import 'package:movie_db_bloc/movies/presentation/componts/see_more_now_playing_movie.dart';
-import 'package:shimmer/main.dart';
+
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_db/core/exports/exports_files.dart';
+import 'package:movie_db/core/services/services_locator.dart';
+import 'package:movie_db/core/utiles/app_string.dart';
+import 'package:movie_db/movies/presentation/componts/custom_widget/custom_head_line_movie_title.dart';
+import 'package:movie_db/movies/presentation/componts/get_now_playing_componts.dart';
+import 'package:movie_db/movies/presentation/componts/get_person_componts.dart';
+import 'package:movie_db/movies/presentation/componts/get_popular_componts.dart';
+import 'package:movie_db/movies/presentation/componts/get_top_rated_componts.dart';
+import 'package:movie_db/movies/presentation/componts/get_tv_trending_componts.dart';
+import 'package:movie_db/movies/presentation/componts/see_more_person_movie.dart';
+import 'package:movie_db/movies/presentation/componts/see_more_popular_movie.dart';
+import 'package:movie_db/movies/presentation/componts/see_more_top_rated_movie.dart';
+import 'package:movie_db/movies/presentation/controller/movie_controller/movies_bloc.dart';
 
 import '../controller/movie_controller/movies_events.dart';
 
@@ -40,12 +49,12 @@ class MoviesScreen extends StatelessWidget {
                 HeadLineMovieTitle(
                   title: AppString.kTopRated,
                   onTap: () {
-                    // Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //       builder: (context) =>
-                    //           MovieDetailScreen(id: movie.id),
-                    //     ));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              const TopRatedSeeMore(),
+                        ));
                   },
                 ),
                 const GetTopRatedMovieComponent(),
@@ -57,6 +66,12 @@ class MoviesScreen extends StatelessWidget {
                 HeadLineMovieTitle(
                   title: AppString.kPersonTrending,
                   onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                             const PersonMovieSeeMore(),
+                        ));
                   },
                 ),
                 const GetPersonMovieComponent()

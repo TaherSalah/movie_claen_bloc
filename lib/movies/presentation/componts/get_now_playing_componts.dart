@@ -1,7 +1,12 @@
-import 'dart:developer';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lottie/lottie.dart';
+import 'package:movie_db/core/exports/exports_files.dart';
+import 'package:movie_db/core/network/api_constanc.dart';
+import 'package:movie_db/core/utiles/enums.dart';
+import 'package:movie_db/movies/presentation/controller/movie_controller/movies_bloc.dart';
+import 'package:movie_db/movies/presentation/controller/movie_controller/movies_states.dart';
+import 'package:movie_db/movies/presentation/screens/movie_details.dart';
 
-import 'package:movie_db_bloc/core/exports/exports_files.dart';
-import 'package:movie_db_bloc/movies/presentation/screens/movie_details.dart';
 
 class GetNowPlayingMovieComponent extends StatelessWidget {
   const GetNowPlayingMovieComponent({super.key});
@@ -13,8 +18,6 @@ class GetNowPlayingMovieComponent extends StatelessWidget {
       buildWhen: (previous, current) =>
           previous.getNowPlayingMoviesState != current.getNowPlayingMoviesState,
       builder: (context, state) {
-        print('GetNowPlayingMovieComponent');
-        print('GetNowPlayingMovieComponent ${state.getNowPlayingMovies}');
 
         switch (state.getNowPlayingMoviesState) {
           case RequestStates.loading:
@@ -39,7 +42,6 @@ class GetNowPlayingMovieComponent extends StatelessWidget {
                       key: const Key('openMovieMinimalDetail'),
                       onTap: () {
                         // / TODO : NAVIGATE TO MOVIE DETAILS
-                        log('iddddd ${item.id}');
                         Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -68,12 +70,16 @@ class GetNowPlayingMovieComponent extends StatelessWidget {
                             },
                             blendMode: BlendMode.dstIn,
                             child: CachedNetworkImage(
+
                               height: 560.0,
                               imageUrl:
                                   ApiConstance.imageUrl(item.backdropPath),
                               fit: BoxFit.cover,
+                              errorWidget: (context, url, error) =>    Lottie.asset(
+                                  "assets/images/not_found.json"),
                             ),
-                          ),
+                            ),
+
                           Align(
                             alignment: Alignment.bottomCenter,
                             child: Column(
@@ -83,7 +89,7 @@ class GetNowPlayingMovieComponent extends StatelessWidget {
                                   padding: const EdgeInsets.only(bottom: 16.0),
                                   child: Container(
                                     width: double.infinity,
-                                    padding: EdgeInsets.all(25),
+                                    padding: const EdgeInsets.all(25),
                                     color: Colors.black.withOpacity(0.4),
                                     child: Column(
                                       children: [

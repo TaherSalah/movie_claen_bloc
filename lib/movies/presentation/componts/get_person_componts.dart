@@ -1,6 +1,13 @@
+
+
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
-import 'package:movie_db_bloc/core/exports/exports_files.dart';
-import 'package:movie_db_bloc/movies/presentation/screens/person_details_screen.dart';
+import 'package:movie_db/core/exports/exports_files.dart';
+import 'package:movie_db/core/network/api_constanc.dart';
+import 'package:movie_db/core/utiles/enums.dart';
+import 'package:movie_db/movies/presentation/controller/movie_controller/movies_bloc.dart';
+import 'package:movie_db/movies/presentation/controller/movie_controller/movies_states.dart';
+import 'package:movie_db/movies/presentation/screens/person_details_screen.dart';
 
 class GetPersonMovieComponent extends StatelessWidget {
   const GetPersonMovieComponent({super.key});
@@ -14,7 +21,6 @@ class GetPersonMovieComponent extends StatelessWidget {
           previous.getPersonTrendingMoviesState !=
           current.getPersonTrendingMoviesState,
       builder: (context, state) {
-        print('GetPersonMovieComponent');
         switch (state.getPersonTrendingMoviesState) {
           case RequestStates.loading:
             return const SizedBox(
@@ -33,7 +39,6 @@ class GetPersonMovieComponent extends StatelessWidget {
                   itemCount: state.getPersonTrendingMovies.length,
                   itemBuilder: (context, index) {
                     final movie = state.getPersonTrendingMovies[index];
-                    print(movie.id);
                     return Container(
                       padding: const EdgeInsets.only(right: 8.0),
                       child: InkWell(
@@ -80,7 +85,10 @@ class GetPersonMovieComponent extends StatelessWidget {
           case RequestStates.error:
             return Text('errrrrrrrrrrrrrrrrrrrrrrrrrror${RequestStates.error}');
         }
+
       },
+
     );
+
   }
 }

@@ -1,19 +1,16 @@
-name: movie_db_bloc
-description: A new Flutter project.
+name: movie_db
+description: this app created with clean arch bloc
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
-
 
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.0.5 <4.0.0'
+  sdk: '>=3.1.0 <4.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
-
-  cupertino_icons: ^1.0.2
   dio:
   equatable:
   flutter_screenutil:
@@ -33,20 +30,23 @@ dependencies:
   dartz:
   carousel_slider:
   image_picker:
-  get_it: 
+  get_it:
   awesome_dialog:
   flutter_staggered_grid_view:
   transparent_image:
   lottie: ^2.5.0
   percent_indicator: ^4.2.3
   firebase_auth: ^4.7.2
+  firebase_core:
+  cupertino_icons: ^1.0.2
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
+
   flutter_lints: ^2.0.0
-
-
 
 
 flutter:
@@ -55,11 +55,19 @@ flutter:
   uses-material-design: true
 
   assets:
-   - assets/images/
+    - assets/images/
+  #   - images/a_dot_ham.jpeg
 
 
 
 
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf

@@ -1,4 +1,10 @@
-import 'package:movie_db_bloc/core/exports/exports_files.dart';
+
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_db/core/exports/exports_files.dart';
+import 'package:movie_db/core/network/api_constanc.dart';
+import 'package:movie_db/core/utiles/enums.dart';
+import 'package:movie_db/movies/presentation/controller/movie_controller/movies_bloc.dart';
+import 'package:movie_db/movies/presentation/controller/movie_controller/movies_states.dart';
 
 import '../screens/movie_details.dart';
 
@@ -14,7 +20,6 @@ class GetTvTrendingMovieComponent extends StatelessWidget {
       buildWhen: (previous, current) =>
           previous.getTvTrendingMoviesState != current.getTvTrendingMoviesState,
       builder: (context, state) {
-        print('GetTvTrendingMovieComponent');
         switch (state.getTvTrendingMoviesState) {
           case RequestStates.loading:
             return const SizedBox(

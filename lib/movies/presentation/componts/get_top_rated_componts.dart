@@ -1,5 +1,13 @@
-import 'package:movie_db_bloc/core/exports/exports_files.dart';
-import 'package:movie_db_bloc/movies/presentation/screens/movie_details.dart';
+
+
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_db/core/network/api_constanc.dart';
+import 'package:movie_db/core/utiles/enums.dart';
+import 'package:movie_db/movies/presentation/controller/movie_controller/movies_bloc.dart';
+import 'package:movie_db/movies/presentation/controller/movie_controller/movies_states.dart';
+import 'package:movie_db/movies/presentation/screens/movie_details.dart';
+
+import '../../../core/exports/exports_files.dart';
 
 class GetTopRatedMovieComponent extends StatelessWidget {
   const GetTopRatedMovieComponent({super.key});
@@ -12,7 +20,6 @@ class GetTopRatedMovieComponent extends StatelessWidget {
       buildWhen: (previous, current) =>
           previous.getTopRatedMoviesState != current.getTopRatedMoviesState,
       builder: (context, state) {
-        print('GetTopRatedMovieComponent');
         switch (state.getTopRatedMoviesState) {
           case RequestStates.loading:
             return const SizedBox(

@@ -1,6 +1,7 @@
-import 'package:movie_db_bloc/core/exports/exports_files.dart';
+import 'package:movie_db/core/exports/exports_files.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
+// ignore: must_be_immutable
 class PercentIndicator extends StatelessWidget {
    double? radius = 10;
    double? lineWidth = 2;
@@ -10,7 +11,7 @@ class PercentIndicator extends StatelessWidget {
 
 
   PercentIndicator(
-      {this.radius, this.lineWidth, this.percent, this.voteAverage, this.text});
+      {super.key, this.radius, this.lineWidth, this.percent, this.voteAverage, this.text});
 
   @override
   Widget build(BuildContext context) {

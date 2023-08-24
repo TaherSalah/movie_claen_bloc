@@ -1,7 +1,11 @@
-import 'package:lottie/lottie.dart';
-import 'package:movie_db_bloc/core/exports/exports_files.dart';
-import 'package:movie_db_bloc/movies/presentation/componts/custom_widget/custom_expansion_tile.dart';
-import 'package:movie_db_bloc/movies/presentation/componts/custom_widget/custom_text_default_widget.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_db/core/Theme/theme.dart';
+import 'package:movie_db/core/exports/exports_files.dart';
+import 'package:movie_db/core/network/api_constanc.dart';
+import 'package:movie_db/core/services/services_locator.dart';
+import 'package:movie_db/core/utiles/enums.dart';
+import 'package:movie_db/movies/presentation/componts/custom_widget/custom_text_default_widget.dart';
+import 'package:movie_db/movies/presentation/controller/movie_details_controller/movie_details_bloc.dart';
 
 class PersonDetailsScreen extends StatefulWidget {
   final int id;
@@ -140,8 +144,10 @@ class _PersonDetailsScreenState extends State<PersonDetailsScreen> {
             case RequestStates.error:
               return const Center(
                 child: CircularProgressIndicator(),
+
               );
           }
+
         },
       ),
     );

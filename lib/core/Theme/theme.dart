@@ -3,7 +3,7 @@ import '../exports/exports_files.dart';
 
 class ThemeClass {
   static Color primaryColor = const Color(0xffAC5087);
-  static Color accentColor = const Color(0xffE9C37);
+  static Color accentColor = const Color(0x0ffe9c37);
   static Color whiteColor = const Color(0xffFFFFFF);
   static Color whiteDarkColor = const Color(0xffFAFBFA);
   static Color blackColor = const Color(0xff2a2a2a);
@@ -96,7 +96,7 @@ class ThemeClass {
     ),
   ];
 
-  static Gradient gradientColors = LinearGradient(
+  static Gradient gradientColors = const LinearGradient(
     colors: <Color>[
       Color(0xff42DEBF),
       Color(0xff6CA5C2),
@@ -104,14 +104,14 @@ class ThemeClass {
       Color(0xff315FAA),
     ],
   );
-  static Shader gradientText = LinearGradient(
+  static Shader gradientText = const LinearGradient(
     colors: <Color>[
       Color(0xff42DEBF),
       Color(0xff6CA5C2),
       Color(0xff4876B2),
       Color(0xff315FAA),
     ],
-  ).createShader(Rect.fromLTWH(0.0, 0.0, 200.0, 70.0));
+  ).createShader(const Rect.fromLTWH(0.0, 0.0, 200.0, 70.0));
 
   static TextStyle defaultTextStyle = TextStyle(
       fontSize: 16.sp,

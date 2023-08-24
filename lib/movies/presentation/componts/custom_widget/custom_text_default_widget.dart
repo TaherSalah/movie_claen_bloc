@@ -1,10 +1,13 @@
-import 'package:movie_db_bloc/core/exports/exports_files.dart';
+
+import 'package:movie_db/core/Theme/theme.dart';
+import 'package:movie_db/core/exports/exports_files.dart';
 
 class TextDefaultWidget extends StatelessWidget {
   const TextDefaultWidget({Key? key,
     required this.title,
     this.fontSize,
     this.fontWeight,
+    // ignore: non_constant_identifier_names
     this.FontFamily,
     this.color,
     this.gradientColors,
@@ -14,6 +17,7 @@ class TextDefaultWidget extends StatelessWidget {
       : super(key: key);
   final double? fontSize;
   final FontWeight? fontWeight;
+  // ignore: non_constant_identifier_names
   final String? FontFamily;
   final Color? color;
   final Paint? gradientColors;

@@ -1,4 +1,5 @@
-import 'package:movie_db_bloc/movies/domain/entities/genres.dart';
+
+import 'package:movie_db/movies/domain/entities/genres.dart';
 
 class GenresModel extends Genres {
   const GenresModel({required super.id, required super.name});

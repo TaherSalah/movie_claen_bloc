@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'shared_obj.dart';
 
@@ -6,8 +5,9 @@ class SharedPref {
   static const String _userObj = "userObj";
   static const String _language = "language_code";
   static const String _deviceId = "device_id";
-
   static const String _intro = "intro";
+
+
 
 
 

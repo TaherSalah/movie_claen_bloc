@@ -1,13 +1,18 @@
 import 'package:dartz/dartz.dart';
-import 'package:movie_db_bloc/core/exports/exports_files.dart';
-import 'package:movie_db_bloc/movies/domain/entities/movie_details.dart';
-import 'package:movie_db_bloc/movies/domain/entities/person_details.dart';
-import 'package:movie_db_bloc/movies/domain/entities/person_movies.dart';
-import 'package:movie_db_bloc/movies/domain/entities/recommendations.dart';
-import 'package:movie_db_bloc/movies/domain/entities/tv_movies.dart';
-import 'package:movie_db_bloc/movies/domain/use_cases/get_movie_details_use_case.dart';
-import 'package:movie_db_bloc/movies/domain/use_cases/get_person_details_use_case.dart';
-import 'package:movie_db_bloc/movies/domain/use_cases/get_recommendations_movie_use_case.dart';
+import 'package:movie_db/core/error/exceptions.dart';
+import 'package:movie_db/core/error/failure.dart';
+import 'package:movie_db/movies/data/data_sources/remote_data_source/movie_remote_data_source.dart';
+import 'package:movie_db/movies/domain/entities/movie.dart';
+import 'package:movie_db/movies/domain/entities/movie_details.dart';
+import 'package:movie_db/movies/domain/entities/person_details.dart';
+import 'package:movie_db/movies/domain/entities/person_movies.dart';
+import 'package:movie_db/movies/domain/entities/recommendations.dart';
+import 'package:movie_db/movies/domain/entities/tv_movies.dart';
+import 'package:movie_db/movies/domain/repositories/base_movie_repostory.dart';
+import 'package:movie_db/movies/domain/use_cases/get_movie_details_use_case.dart';
+import 'package:movie_db/movies/domain/use_cases/get_person_details_use_case.dart';
+import 'package:movie_db/movies/domain/use_cases/get_recommendations_movie_use_case.dart';
+
 
 class MovieRepository extends BaseMovieRepository {
   final BaseRemoteMovieDataSource baseRemoteMovieDataSource;
@@ -125,5 +130,11 @@ class MovieRepository extends BaseMovieRepository {
     } on ServerException catch (failure) {
       return Left(ServerFailure(failure.errorMessageModel.statusMessage));
     }
+  }
+
+  @override
+  Future<Either<ServerFailure, dynamic>> getLoginUser(PersonDetailsPrams parameters) {
+    // TODO: implement getLoginUser
+    throw UnimplementedError();
   }
 }

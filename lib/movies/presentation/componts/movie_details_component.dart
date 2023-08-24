@@ -1,4 +1,6 @@
-import 'package:movie_db_bloc/core/exports/exports_files.dart';
+import 'package:movie_db/core/exports/exports_files.dart';
+import 'package:movie_db/core/network/api_constanc.dart';
+import 'package:movie_db/movies/domain/entities/genres.dart';
 
 class MovieDetailContent extends StatelessWidget {
   final String? imageUrl;

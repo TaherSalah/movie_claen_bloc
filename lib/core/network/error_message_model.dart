@@ -1,4 +1,5 @@
-import 'package:movie_db_bloc/core/exports/exports_files.dart';
+
+import 'package:movie_db/core/exports/exports_files.dart';
 
 class ErrorMessageModel extends Equatable {
   final int statusCode;

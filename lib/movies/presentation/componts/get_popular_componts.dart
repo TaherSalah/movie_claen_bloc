@@ -1,5 +1,13 @@
-import 'package:movie_db_bloc/core/exports/exports_files.dart';
-import 'package:movie_db_bloc/movies/presentation/screens/movie_details.dart';
+import 'package:animate_do/animate_do.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_db/core/network/api_constanc.dart';
+import 'package:movie_db/core/utiles/enums.dart';
+import 'package:movie_db/movies/presentation/controller/movie_controller/movies_bloc.dart';
+import 'package:movie_db/movies/presentation/controller/movie_controller/movies_states.dart';
+import 'package:movie_db/movies/presentation/screens/movie_details.dart';
+import 'package:shimmer/shimmer.dart';
 
 class GetPopularMovieComponent extends StatelessWidget {
   const GetPopularMovieComponent({super.key});
@@ -12,7 +20,6 @@ class GetPopularMovieComponent extends StatelessWidget {
       buildWhen: (previous, current) =>
           previous.getPopularMoviesState != current.getPopularMoviesState,
       builder: (context, state) {
-        print('GetPopularMovieComponent');
         switch (state.getPopularMoviesState) {
           case RequestStates.loading:
             return const SizedBox(
