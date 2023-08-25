@@ -2,7 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:movie_db/core/utiles/validator.dart';
+import 'package:movie_db/movies/presentation/screens/main_home.dart';
+import 'package:movie_db/movies/presentation/screens/movies_screen.dart';
 import 'package:movie_db/movies/presentation/screens/register_screen.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -23,6 +26,7 @@ class LoginWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final userCredential = FirebaseAuth.instance;
     TextEditingController emailController = TextEditingController();
     TextEditingController passwordController = TextEditingController();
     return SingleChildScrollView(
@@ -77,14 +81,85 @@ class LoginWidget extends StatelessWidget {
               ],
             ),
             SizedBox(
+              height: 20,
+            ),
+            SizedBox(
               width: 150,
               child: defaultButton(
                   context: context,
-                  onPressed: () {
-                    if(formKey.currentState!.validate()){}
+                  onPressed: () async{
+                    if (formKey.currentState!.validate()) {
+                      await login(
+                      context,
+                      email: emailController.text,
+                      password: passwordController.text);
+                    }
                     // Navigator.push(context, MaterialPageRoute(builder: (context) => const RegisterScreen(),));
                   },
                   text: 'Login'),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                InkWell(
+                  onTap: () async {
+
+            await        signInWithGoogle(context);
+                  },
+                  child: Card(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        children: [
+                          Image.asset('assets/images/google.png'),
+                          const Text("Google"),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 20,
+                ),
+                InkWell(
+                  onTap: () async {
+                    try {
+                      final userCredential =
+                          await FirebaseAuth.instance.signInAnonymously();
+                      print("Signed in with temporary account.");
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => MoviesScreen(),
+                          ));
+                    } on FirebaseAuthException catch (e) {
+                      switch (e.code) {
+                        case "operation-not-allowed":
+                          print(
+                              "Anonymous auth hasn't been enabled for this project.");
+
+                          break;
+                        default:
+                          print("Unknown error.");
+                      }
+                    }
+                  },
+                  child: Card(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        children: [
+                          Image.asset('assets/images/anonymous.png'),
+                          const Text("Anonymous"),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             )
           ],
         ),
@@ -166,3 +241,36 @@ Widget defaultTextButton(
         {required VoidCallback onPressed, required String text}) =>
     TextButton(onPressed: onPressed, child: Text(text));
 ///////////  End  default Text Button Widget /////////////
+
+login(BuildContext context,{required String email, required String password}) async {
+  try {
+    final credential = await FirebaseAuth.instance
+        .signInWithEmailAndPassword(email: email, password: password);
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MainHome(),));
+  } on FirebaseAuthException catch (e) {
+    if (e.code == 'user-not-found') {
+      print('No user found for that email.');
+    } else if (e.code == 'wrong-password') {
+      print('Wrong password provided for that user.');
+    }
+  }
+}
+  Future<UserCredential> signInWithGoogle(BuildContext context) async {
+    // Trigger the authentication flow
+
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+    // Obtain the auth details from the request
+    final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+
+    // Create a new credential
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth?.accessToken,
+      idToken: googleAuth?.idToken,
+    );
+
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MainHome(),));
+
+    // Once signed in, return the UserCredential
+    return await FirebaseAuth.instance.signInWithCredential(credential);
+  }

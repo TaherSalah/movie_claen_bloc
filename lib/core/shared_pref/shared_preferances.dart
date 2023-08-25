@@ -6,11 +6,18 @@ class SharedPref {
   static const String _language = "language_code";
   static const String _deviceId = "device_id";
   static const String _intro = "intro";
+  static const String _Login = "access_token";
 
 
 
 
+  static Future<void> setLogIn({ String? token}) async {
+    await SharedObj().prefs?.setString(_Login, token??'');
 
+  }
+  static String? getLogIn() {
+    return SharedObj().prefs?.getString(_Login);
+  }
   static bool isUserLogIn() {
     return SharedObj().prefs?.getString(_userObj) != null;
   }

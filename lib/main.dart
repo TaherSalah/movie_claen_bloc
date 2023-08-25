@@ -1,16 +1,23 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_db/core/exports/exports_files.dart';
 import 'package:movie_db/core/services/services_locator.dart';
+import 'package:movie_db/movies/presentation/screens/login_screen.dart';
+import 'package:movie_db/movies/presentation/screens/movies_screen.dart';
+import 'package:movie_db/movies/presentation/screens/register_screen.dart';
 import 'package:movie_db/movies/presentation/screens/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  await SharedPreferences.getInstance();
   ServicesLocator().init();
-
   runApp(const MyApp());
 }
+
+bool? isLogin;
+var user = FirebaseAuth.instance.currentUser;
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -25,14 +32,11 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Movies DB',
           theme: ThemeData(
-
             useMaterial3: true,
           ),
-          home: const SplashScreen(),
+          home: user ==null ? const LoginScreen() : const SplashScreen(),
         );
       },
     );
   }
-
 }
-

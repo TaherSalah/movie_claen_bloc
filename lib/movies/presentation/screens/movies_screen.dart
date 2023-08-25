@@ -1,4 +1,3 @@
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_db/core/exports/exports_files.dart';
 import 'package:movie_db/core/services/services_locator.dart';
@@ -16,9 +15,15 @@ import 'package:movie_db/movies/presentation/controller/movie_controller/movies_
 
 import '../controller/movie_controller/movies_events.dart';
 
-class MoviesScreen extends StatelessWidget {
+class MoviesScreen extends StatefulWidget {
   const MoviesScreen({Key? key}) : super(key: key);
 
+  @override
+  State<MoviesScreen> createState() => _MoviesScreenState();
+}
+
+
+class _MoviesScreenState extends State<MoviesScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -52,8 +57,7 @@ class MoviesScreen extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>
-                              const TopRatedSeeMore(),
+                          builder: (context) => const TopRatedSeeMore(),
                         ));
                   },
                 ),
@@ -69,8 +73,7 @@ class MoviesScreen extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>
-                             const PersonMovieSeeMore(),
+                          builder: (context) => const PersonMovieSeeMore(),
                         ));
                   },
                 ),
