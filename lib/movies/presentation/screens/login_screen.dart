@@ -7,6 +7,7 @@ import 'package:movie_db/core/utiles/validator.dart';
 import 'package:movie_db/movies/presentation/screens/main_home.dart';
 import 'package:movie_db/movies/presentation/screens/movies_screen.dart';
 import 'package:movie_db/movies/presentation/screens/register_screen.dart';
+import 'package:movie_db/movies/presentation/screens/splash_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -87,12 +88,11 @@ class LoginWidget extends StatelessWidget {
               width: 150,
               child: defaultButton(
                   context: context,
-                  onPressed: () async{
+                  onPressed: () async {
                     if (formKey.currentState!.validate()) {
-                      await login(
-                      context,
-                      email: emailController.text,
-                      password: passwordController.text);
+                      await login(context,
+                          email: emailController.text,
+                          password: passwordController.text);
                     }
                     // Navigator.push(context, MaterialPageRoute(builder: (context) => const RegisterScreen(),));
                   },
@@ -106,8 +106,7 @@ class LoginWidget extends StatelessWidget {
               children: [
                 InkWell(
                   onTap: () async {
-
-            await        signInWithGoogle(context);
+                    await signInWithGoogle(context);
                   },
                   child: Card(
                     child: Padding(
@@ -126,26 +125,7 @@ class LoginWidget extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () async {
-                    try {
-                      final userCredential =
-                          await FirebaseAuth.instance.signInAnonymously();
-                      print("Signed in with temporary account.");
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => MoviesScreen(),
-                          ));
-                    } on FirebaseAuthException catch (e) {
-                      switch (e.code) {
-                        case "operation-not-allowed":
-                          print(
-                              "Anonymous auth hasn't been enabled for this project.");
-
-                          break;
-                        default:
-                          print("Unknown error.");
-                      }
-                    }
+                 await signInAnonymously(context);
                   },
                   child: Card(
                     child: Padding(
@@ -242,11 +222,16 @@ Widget defaultTextButton(
     TextButton(onPressed: onPressed, child: Text(text));
 ///////////  End  default Text Button Widget /////////////
 
-login(BuildContext context,{required String email, required String password}) async {
+login(BuildContext context,
+    {required String email, required String password}) async {
   try {
     final credential = await FirebaseAuth.instance
         .signInWithEmailAndPassword(email: email, password: password);
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MainHome(),));
+    Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => MoviesScreen(),
+        ));
   } on FirebaseAuthException catch (e) {
     if (e.code == 'user-not-found') {
       print('No user found for that email.');
@@ -255,22 +240,53 @@ login(BuildContext context,{required String email, required String password}) as
     }
   }
 }
-  Future<UserCredential> signInWithGoogle(BuildContext context) async {
-    // Trigger the authentication flow
 
-    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+Future<UserCredential> signInWithGoogle(BuildContext context) async {
+  // Trigger the authentication flow
 
-    // Obtain the auth details from the request
-    final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+  final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
-    // Create a new credential
-    final credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth?.accessToken,
-      idToken: googleAuth?.idToken,
-    );
+  // Obtain the auth details from the request
+  final GoogleSignInAuthentication? googleAuth =
+      await googleUser?.authentication;
 
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MainHome(),));
+  // Create a new credential
+  final credential = GoogleAuthProvider.credential(
+    accessToken: googleAuth?.accessToken,
+    idToken: googleAuth?.idToken,
+  );
 
-    // Once signed in, return the UserCredential
-    return await FirebaseAuth.instance.signInWithCredential(credential);
+  // ignore: use_build_context_synchronously
+  Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const SplashScreen(),
+      ));
+
+  // Once signed in, return the UserCredential
+  return await FirebaseAuth.instance.signInWithCredential(credential);
+}
+
+signInAnonymously(BuildContext context) async{
+  try {
+    final userCredential =
+        await FirebaseAuth.instance.signInAnonymously();
+    print("Signed in with temporary account.");
+    // ignore: use_build_context_synchronously
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const MainHome(),
+        ));
+  } on FirebaseAuthException catch (e) {
+    switch (e.code) {
+      case "operation-not-allowed":
+        print(
+            "Anonymous auth hasn't been enabled for this project.");
+
+        break;
+      default:
+        print("Unknown error.");
+    }
   }
+}

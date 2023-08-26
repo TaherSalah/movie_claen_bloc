@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:movie_db/core/exports/exports_files.dart';
@@ -5,8 +6,8 @@ import 'package:movie_db/core/network/api_constanc.dart';
 import 'package:movie_db/core/utiles/enums.dart';
 import 'package:movie_db/movies/presentation/controller/movie_controller/movies_bloc.dart';
 import 'package:movie_db/movies/presentation/controller/movie_controller/movies_states.dart';
+import 'package:movie_db/movies/presentation/screens/login_screen.dart';
 import 'package:movie_db/movies/presentation/screens/movie_details.dart';
-
 
 class GetNowPlayingMovieComponent extends StatelessWidget {
   const GetNowPlayingMovieComponent({super.key});
@@ -18,7 +19,6 @@ class GetNowPlayingMovieComponent extends StatelessWidget {
       buildWhen: (previous, current) =>
           previous.getNowPlayingMoviesState != current.getNowPlayingMoviesState,
       builder: (context, state) {
-
         switch (state.getNowPlayingMoviesState) {
           case RequestStates.loading:
             return const SizedBox(
@@ -65,28 +65,29 @@ class GetNowPlayingMovieComponent extends StatelessWidget {
                                 ],
                                 stops: [0, 0.3, 0.5, 1],
                               ).createShader(
-                                Rect.fromLTRB(0, 0, rect.width, rect.height),
+                                Rect.fromLTRB(
+                                    0, 0, rect.width, rect.height),
                               );
                             },
                             blendMode: BlendMode.dstIn,
                             child: CachedNetworkImage(
-
                               height: 560.0,
                               imageUrl:
                                   ApiConstance.imageUrl(item.backdropPath),
                               fit: BoxFit.cover,
-                              errorWidget: (context, url, error) =>    Lottie.asset(
-                                  "assets/images/not_found.json"),
+                              errorWidget: (context, url, error) =>
+                                  Lottie.asset(
+                                      "assets/images/not_found.json"),
                             ),
-                            ),
-
+                          ),
                           Align(
                             alignment: Alignment.bottomCenter,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsets.only(bottom: 16.0),
+                                  padding:
+                                      const EdgeInsets.only(bottom: 16.0),
                                   child: Container(
                                     width: double.infinity,
                                     padding: const EdgeInsets.all(25),
@@ -97,7 +98,8 @@ class GetNowPlayingMovieComponent extends StatelessWidget {
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
                                           children: [
-                                            const Icon(Icons.online_prediction,
+                                            const Icon(
+                                                Icons.online_prediction,
                                                 color: Colors.green),
                                             SizedBox(
                                               width: 10.w,
@@ -110,7 +112,9 @@ class GetNowPlayingMovieComponent extends StatelessWidget {
                                             ),
                                           ],
                                         ),
-                                        SizedBox(height: 5.h,),
+                                        SizedBox(
+                                          height: 5.h,
+                                        ),
                                         Text(
                                           item.title,
                                           textAlign: TextAlign.center,

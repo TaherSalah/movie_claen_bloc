@@ -39,28 +39,16 @@ class GetTvTrendingMovieComponent extends StatelessWidget {
                     crossAxisCount: 2),
                 itemBuilder: (context, index) {
                   final movie = state.getTvTrendingMovies[index];
-                  return InkWell(
-                    onTap: () {
-                      /// TODO : NAVIGATE TO  MOVIE DETAILS
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                MovieDetailScreen(id: movie.id),
-                          ));
-
-                    },
-                    child: ClipRRect(
-                      borderRadius:
-                          const BorderRadius.all(Radius.circular(8.0)),
-                      child: CachedNetworkImage(
-                        width: 120.0,
-                        fit: BoxFit.cover,
-                        imageUrl: ApiConstance.imageUrl(movie.backdropPath),
-                        placeholder: (context, url) => defShimmer(),
-                        errorWidget: (context, url, error) =>
-                            const Icon(Icons.error),
-                      ),
+                  return ClipRRect(
+                    borderRadius:
+                        const BorderRadius.all(Radius.circular(8.0)),
+                    child: CachedNetworkImage(
+                      width: 120.0,
+                      fit: BoxFit.cover,
+                      imageUrl: ApiConstance.imageUrl(movie.backdropPath),
+                      placeholder: (context, url) => defShimmer(),
+                      errorWidget: (context, url, error) =>
+                          const Icon(Icons.error),
                     ),
                   );
                 },

@@ -39,7 +39,7 @@ class _MainHomeState extends State<MainHome> {
                 ),
                 label: 'Home'),
             BottomNavigationBarItem(
-                backgroundColor: Colors.green,
+                backgroundColor: Colors.black87,
                 icon: Icon(
                   Icons.settings,
                 ),

@@ -65,12 +65,11 @@ class _AboutItemBuilderState extends State<AboutItemBuilder> {
 
                 InkWell(
                   onTap: () async{
-                   await FirebaseAuth.instance.signOut();
-                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen(),));
+                   await logOut(context);
                   },
                   child: Row(
                     children: [
-                      Icon(Icons.login_outlined),
+                      const Icon(Icons.login_outlined),
                       Padding(
                         padding: const EdgeInsets.all(7.0),
                         child: Text(
@@ -104,4 +103,14 @@ class _AboutItemBuilderState extends State<AboutItemBuilder> {
       ),
     );
   }
+}
+
+logOut(BuildContext context) async {
+  await FirebaseAuth.instance.signOut();
+  // ignore: use_build_context_synchronously
+  Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const LoginScreen(),
+      ));
 }
