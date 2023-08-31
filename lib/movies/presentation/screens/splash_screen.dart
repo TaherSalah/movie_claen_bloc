@@ -8,7 +8,6 @@ import 'dart:async';
 
 import 'package:movie_db/core/exports/exports_files.dart';
 import 'package:movie_db/movies/presentation/componts/custom_widget/custom_splash_builder.dart';
-import 'package:movie_db/movies/presentation/screens/main_home.dart';
 
 import 'package:movie_db/movies/presentation/screens/movies_screen.dart';
 

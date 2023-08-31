@@ -15,8 +15,10 @@ dependencies:
   equatable:
   flutter_screenutil:
   flutter_svg:
+  flutter_rating_bar: ^4.0.1
   flutter_modular:
   http:
+  mvc_pattern:
   path_provider:
   shared_preferences:
   intl:
@@ -40,13 +42,16 @@ dependencies:
   firebase_core:
   cupertino_icons: ^1.0.2
   google_sign_in:
-
+  flutter_launcher_icons:
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/splashImage.png"
 
-  flutter_lints: ^2.0.0
 
 
 flutter:

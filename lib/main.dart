@@ -1,11 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart';
 import 'package:movie_db/core/exports/exports_files.dart';
 import 'package:movie_db/core/services/services_locator.dart';
 import 'package:movie_db/movies/presentation/screens/login_screen.dart';
-import 'package:movie_db/movies/presentation/screens/movies_screen.dart';
-import 'package:movie_db/movies/presentation/screens/register_screen.dart';
 import 'package:movie_db/movies/presentation/screens/splash_screen.dart';
 
 void main() async {
@@ -34,7 +31,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             useMaterial3: true,
           ),
-          home: user ==null ? const LoginScreen() : const SplashScreen(),
+          home: user == null ? const LoginScreen() : const SplashScreen(),
         );
       },
     );
