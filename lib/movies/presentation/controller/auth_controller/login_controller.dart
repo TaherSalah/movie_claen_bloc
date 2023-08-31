@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:movie_db/movies/presentation/screens/movies_screen.dart';
+import 'package:movie_db/movies/presentation/screens/main_screen.dart';
 import 'package:movie_db/movies/presentation/screens/splash_screen.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 
@@ -189,7 +189,9 @@ class LoginController extends ControllerMVC {
 
   Future<UserCredential> signInWithGoogle(BuildContext context) async {
     // Trigger the authentication flow
-
+setState(() {
+  isLoading=true;
+});
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
     // Obtain the auth details from the request
@@ -201,12 +203,14 @@ class LoginController extends ControllerMVC {
       accessToken: googleAuth?.accessToken,
       idToken: googleAuth?.idToken,
     );
-
+setState(() {
+  isLoading=false;
+});
     // ignore: use_build_context_synchronously
-    Navigator.push(
+    Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => const SplashScreen(),
+          builder: (context) => const MainHome(),
         ));
 
     // Once signed in, return the UserCredential

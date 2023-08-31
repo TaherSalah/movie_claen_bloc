@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:movie_db/movies/presentation/screens/movies_screen.dart';
+import 'package:movie_db/movies/presentation/screens/main_screen.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 
 class RegisterController extends ControllerMVC {
@@ -8,7 +8,12 @@ class RegisterController extends ControllerMVC {
     _this ??= RegisterController._();
     return _this!;
   }
+  bool isActive = true;
 
+   togglePassword() {
+    isActive = !isActive;
+    setState(() {});
+  }
   bool isLoading = false;
   final formKey = GlobalKey<FormState>();
   TextEditingController userNameController = TextEditingController();

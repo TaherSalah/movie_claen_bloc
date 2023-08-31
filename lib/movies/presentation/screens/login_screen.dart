@@ -54,7 +54,7 @@ class _LoginWidgetState extends StateMVC<LoginWidget> {
                 padding: EdgeInsets.all(12.5),
                 child: defualtFormField(
                   controller: con.emailController,
-                  type: TextInputType.text,
+                  type: TextInputType.emailAddress,
                   prefix: Icons.email_outlined,
                   hintText: 'Email Address',
                   padding: 0.0,
@@ -64,7 +64,9 @@ class _LoginWidgetState extends StateMVC<LoginWidget> {
               Container(
                 padding: const EdgeInsets.all(12.5),
                 child: defualtFormField(
+
                   isPassword: con.isActive,
+
                   controller: con.passwordController,
                   suffix: InkWell(
                     onTap: con.togglePassword,
@@ -73,7 +75,7 @@ class _LoginWidgetState extends StateMVC<LoginWidget> {
                         : const Icon(Icons.visibility),
                   ) ,
 
-                  type: TextInputType.text,
+                  type: TextInputType.number,
                   prefix: Icons.lock_open_outlined,
                   hintText: 'your password',
                   padding: 0.0,

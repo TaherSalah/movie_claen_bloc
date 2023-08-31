@@ -7,7 +7,7 @@ import 'package:movie_db/movies/presentation/componts/custom_widget/defualt_form
 import 'package:movie_db/movies/presentation/componts/custom_widget/loading_screen.dart';
 import 'package:movie_db/movies/presentation/controller/auth_controller/register_controller.dart';
 import 'package:movie_db/movies/presentation/screens/login_screen.dart';
-import 'package:movie_db/movies/presentation/screens/movies_screen.dart';
+import 'package:movie_db/movies/presentation/screens/main_screen.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -78,7 +78,7 @@ class _RegisterWidgetState extends StateMVC<RegisterWidget> {
                 padding: EdgeInsets.all(12.5),
                 child: defualtFormField(
                   controller: con.emailController,
-                  type: TextInputType.text,
+                  type: TextInputType.emailAddress,
                   prefix: Icons.email_outlined,
                   hintText: 'Email Address',
                   padding: 0.0,
@@ -88,14 +88,26 @@ class _RegisterWidgetState extends StateMVC<RegisterWidget> {
               Container(
                 padding: const EdgeInsets.all(12.5),
                 child: defualtFormField(
+
+                  isPassword: con.isActive,
+
                   controller: con.passwordController,
-                  type: TextInputType.text,
-                  prefix: Icons.lock,
+                  suffix: InkWell(
+                    onTap: con.togglePassword,
+                    child: con.isActive
+                        ? const Icon(Icons.visibility_off)
+                        : const Icon(Icons.visibility),
+                  ) ,
+
+                  type: TextInputType.number,
+                  prefix: Icons.lock_open_outlined,
                   hintText: 'your password',
                   padding: 0.0,
                   validate: Validator.password,
+
                 ),
               ),
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
